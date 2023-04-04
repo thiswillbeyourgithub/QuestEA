@@ -1,0 +1,78 @@
+#!/usr/bin/zsh
+
+# send notification to phone
+function phone_notif() {
+    sender="laptop_tFzfJNlDSjNFA"
+    title="PROJ"
+    message="$1"
+    #curl -H "Title: $title" -d "$message" "ntfy.sh/$sender"
+}
+
+function call() {
+    phone_notif "START $@"
+    python $@
+}
+
+
+function main() {
+
+    norm_list=("l2" "l1")
+    dataset_list=("16PF" "DASS" "Hamilton" "HEXACO" "IPIP")
+    method_list=("kmeans")
+    #method_list=("kmeans" "SpectralCosine")
+    #norm_list=("l2")
+    mode_list=("default_raw" "default_agg" "sbert" "openai")
+
+    # counting number of iteration
+    total=0
+    for dataset in "${dataset_list[@]}" ; do
+        for mode in "${mode_list[@]}" ; do
+            for method in "${method_list[@]}" ; do
+                for norm in "${norm_list[@]}" ; do
+                    total=$(($total+1))
+                done
+            done
+        done
+    done
+
+    rm -rv results_ignore_backups
+
+    cnt=0
+    for dataset in "${dataset_list[@]}"
+    do
+        for mode in "${mode_list[@]}"
+        do
+            for method in "${method_list[@]}"
+            do
+                for norm in "${norm_list[@]}"
+                do
+                    sudo swapoff -av && sudo swapon -av
+                    call ./QuestEA.py \
+                        --mode=$mode \
+                        --note=$mode \
+                        --cluster_method=$method \
+                        --norm=$norm \
+                        --n_cpus=$(cat n_cpus) \
+                        --n_components=20 \
+                        --sample_to_keep=10000 \
+                        --datasetname=$dataset
+                    cnt=$(($cnt+1)) ; echo $cnt| tqdm --total $total --update_to --desc "BATCH PROGRESS" --null
+                    echo ; echo ; echo ; echo ; echo
+                    sleep 2
+                done
+            done
+        done
+        rm -rv "results_ignore_backups/$dataset/batch_cache"
+        phone_notif "computing results"
+        python compare_results.py --paths="./results_ignore_backups/$dataset" --behavior="store"
+        python plotter.py --open_plot=False --paths="./results_ignore_backups/$dataset" --behavior="store"
+    done
+
+    sudo swapoff -av && sudo swapon -av
+
+    find results_ignore_backups/ -name "network.png" | xargs -I% -P 10 xdg-open "%"
+
+    echo "FINISHED"
+}
+
+(main || phone_notif "Error during script")

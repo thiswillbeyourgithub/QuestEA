@@ -88,11 +88,10 @@ def CompareResultsPairwise(
         temp["dimensionB"] = results_para[inc]["df_shape_ndimB"]
 
         for k, v in temp.items():
-            if type(temp[k]) == np.int64:
+            if isinstance(temp[k], np.int64):
                 temp[k] = int(v)
-            elif type(temp[k]) == np.float64:
+            elif isinstance(temp[k], np.float64):
                 temp[k] = float(v)
-
         results.append(temp)
 
     if behavior in ["both", "store"]:

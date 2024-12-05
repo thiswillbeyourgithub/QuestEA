@@ -38,7 +38,7 @@ except Exception as err:
 
 try:
     from .utils.bvae import OptimizedBVAE
-except:
+except Exception:
     from utils.bvae import OptimizedBVAE
 
 
@@ -396,7 +396,7 @@ class QuestEA:
                 whi(f"Dimension reduction not needed: {self.df_EmbedInventories.shape}")
                 self.n_components = "OrigD"
                 if self.dimred_method != "pca":
-                    raise IgnoreInGrid(red(f"No dimension reduction needed and not asking to use PCA, this probably mean that the result would be redundant. Exiting now."))
+                    raise IgnoreInGrid(red("No dimension reduction needed and not asking to use PCA, this probably mean that the result would be redundant. Exiting now."))
             elif self.dimred_method == "pca":
                 whi("Applying PCA")
                 pca = PCA(
@@ -489,7 +489,7 @@ class QuestEA:
             self.n_components = "OrigD"
             whi("Dimension reduction not needed")
             if self.dimred_method != "pca":
-                raise IgnoreInGrid(red(f"No dimension reduction needed and not asking to use PCA, this probably mean that the result would be redundant. Exiting now."))
+                raise IgnoreInGrid(red("No dimension reduction needed and not asking to use PCA, this probably mean that the result would be redundant. Exiting now."))
         whi(f"Current self.df_EmbedInventories shape: {self.df_EmbedInventories.shape}")
 
         dimred_time = time.time() - dimred_time

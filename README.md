@@ -10,6 +10,12 @@
 
 ### How does it work?
 
+### What are the main challenges in this approach?
+* This is a completely new way to analyze questionnaire data that has never been done before. There is no established ground truth for patient data in this context since we're measuring it in a novel way.
+* The high-dimensional nature of the data makes it particularly challenging to analyze intuitively. Human intuition breaks down when dealing with multidimensional spaces.
+* Due to these challenges, we have to rely on a combination of coarse intrinsic metrics to evaluate our results.
+* Ultimately, this technique needs validation with real clinical data to determine which aspects are most valuable to pursue further.
+
 ### Why did you use those specific metrics?
 * Since this is a completely new approach to analyzing questionnaire data, there is no ground truth to validate against. Therefore, we rely on intrinsic metrics (like Calinski-Harabasz, Davies-Bouldin, and Silhouette scores) to evaluate the quality of the clustering results.
 * These metrics help us assess how well-defined and separated the clusters are, without needing external validation data.

@@ -26,7 +26,7 @@ from joblib import Parallel, delayed, Memory
 from utils.dataloader import Dataloader
 from utils.dynamic_batch import DynamicBatchIterator
 from utils.misc import (set_global_logging_level, whi, yel, red,
-                        _get_sentence_encoder, set_global_logging_level,
+                        _get_sentence_encoder,
                         IgnoreInGrid
                         )
 

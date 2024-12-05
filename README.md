@@ -251,6 +251,19 @@ tensorboard --logdir=./tensorboard_runs
     * The Silhouette Coefficient is generally higher for convex clusters than other concepts of clusters, such as density based clusters like those obtained through DBSCAN.
 
 
+# Preliminary Results
+
+⚠️ **WARNING: HIGHLY PRELIMINARY RESULTS** ⚠️
+
+The following results should be interpreted with extreme caution:
+* Based on publicly available datasets of questionable quality
+* May not be reproducible with clinical-grade data
+* Primarily serves as a proof-of-concept
+* Should not be used for any clinical decisions
+
+Key findings from our **initial** experiments:
+[TODO]
+
 # Roadmap / TODOs
 <!-- BEGIN_TODO -->
 - add pacmap as a dim reduction

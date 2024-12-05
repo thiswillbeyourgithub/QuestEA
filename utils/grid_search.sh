@@ -1,4 +1,16 @@
 #!/usr/bin/zsh
+#
+# Usage: ./grid_search.sh
+#
+# This script performs a grid search across multiple datasets, modes, clustering methods,
+# and normalization techniques for the QuestEA project. It runs the QuestEA.py script
+# with various combinations of parameters, processes the results, and generates plots.
+#
+# The script also:
+# - Sends notifications to a phone at key points in the process
+# - Manages system swap to ensure optimal performance
+# - Cleans up intermediate results
+# - Opens result visualizations upon completion
 
 # send notification to phone
 function phone_notif() {

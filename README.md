@@ -9,6 +9,9 @@
 * As I'm currently an independant researcher, I don't have access to a lot of data so I reach out to an official lab and am waiting to be granted access to official data.
 
 
+# Notes
+* Many docstrings in this project were initially generated using [aider](https://aider.chat/) and were quickly reviewed for validity
+
 # List of datasets used
 
 ### openpsychometrics data

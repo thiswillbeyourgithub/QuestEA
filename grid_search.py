@@ -1,3 +1,36 @@
+"""Grid search implementation for QuestEA (Questionnaire Embeddings Analysis).
+
+This script performs a grid search over different parameters to analyze questionnaire data
+using various embedding and clustering techniques.
+
+Usage:
+    python grid_search.py [--logdir=DIR] [--resultdir=DIR] [--testing] [--debug] [--verbose]
+
+Arguments:
+    --logdir: Directory for tensorboard logs (default: ./tensorboard_runs)
+    --resultdir: Directory for results (default: ./results_ignore_backups/)
+    --testing: Run in testing mode with reduced dataset (default: False)
+    --debug: Enable debug mode with pdb post-mortem (default: False)
+    --verbose: Enable verbose output (default: False)
+
+The script:
+1. Iterates through multiple datasets (Hamilton, DASS, HEXACO, etc.)
+2. For each dataset, tests combinations of:
+   - Embedding methods (raw features, aggregated features, various LLM models)
+   - Normalization techniques (L1, L2)
+   - Dimensionality reduction (PCA, UMAP, beta-VAE, dictionnarylearning, etc.)
+   - Clustering methods (kmeans, spectral, bisecting kmeans)
+3. Evaluates clustering quality using multiple metrics:
+   - Davies-Bouldin score
+   - Calinski-Harabasz score
+   - Silhouette score
+4. Saves results and visualizations to the specified directories
+5. Explore the data using tensorboard
+
+Results can be visualized using tensorboard:
+    tensorboard --logdir=./tensorboard_runs
+"""
+
 import time
 import pdb
 import os

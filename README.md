@@ -119,6 +119,15 @@ This process creates a rich representation that captures both:
         * -1 indicates incorrect clustering
 * All these metrics work best with convex clusters and may not capture quality as well for density-based or irregularly shaped clusters
 
+### How can I help?
+* There are several ways you can contribute to this research project:
+    * Try out the code and report any issues you encounter
+    * Share relevant datasets that could help validate the approach
+    * Suggest improvements to the methodology or code
+    * Help with documentation and examples
+    * Contribute to the codebase through pull requests
+* All contributions, big or small, are welcome!
+
 ### What key questions do you hope to answer with this approach?
 * The primary question is whether we can predict treatment response earlier:
     * Can we identify which patients will respond better to treatment A vs B?

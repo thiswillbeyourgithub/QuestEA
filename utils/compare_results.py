@@ -160,7 +160,7 @@ def compareOnePair(pathA, pathB, testing_mode, verbose):
     for k in K_list:
         pred1 = np.array([int(predA.loc[(cid, k), "prediction"]) for cid in common_ids])
         pred2 = np.array([int(predB.loc[(cid, k), "prediction"]) for cid in common_ids])
-                
+
         scores, pred1, pred2 = remap_label_then_score(pred1, pred2, verbose)
         scores_list.append(scores)
 
@@ -207,7 +207,18 @@ def score_func(pred1, pred2):
             }
 
 def remap_label_then_score(pred1, pred2, verbose):
-    """ hungarian method to remap labels"""
+    """ 
+    Hungarian method to remap labels and then score the predictions.
+
+    This remapping is necessary because clustering algorithms may assign 
+    different numerical labels to the same conceptual clusters across different 
+    runs or methods. For example, what one method calls cluster '1' might be 
+    essentially the same as what another method calls cluster '3'. 
+
+    The Hungarian method finds the optimal one-to-one mapping between the 
+    label sets, allowing for a fair comparison of the clustering results 
+    regardless of the arbitrary numerical labels assigned.
+    """
 
     old_pred1 = pred1.copy()
     old_scores = score_func(old_pred1, pred2)
@@ -247,6 +258,7 @@ def remap_label_then_score(pred1, pred2, verbose):
 
 
 def mean(li):
+    "easier to read"
     return sum(li)/len(li)
 
 

@@ -19,6 +19,10 @@
     * Identifies redundant questions through correlation analysis
     * Reveals non-linear relationships between questions that only become apparent after dimensional reduction (UMAP/PaCMAP)
     * Helps create more efficient questionnaires by removing unnecessary redundancy
+    * Can potentially generate new relevant questions by:
+        * Finding patients who answer similarly on existing questions but differ in their symptom embeddings
+        * Using [embedding-to-text techniques](https://simonwillison.net/2023/Oct/10/bottleneck/) to generate questions that maximize separation between such patients
+        * While not always mathematically possible, this approach offers a novel way to discover overlooked diagnostic questions
 
 * Better Patient Comparison:
     * Enables comparison of patients across studies with different survey combinations

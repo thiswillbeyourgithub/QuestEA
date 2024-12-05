@@ -1,3 +1,21 @@
+"""
+Compare clustering results from QuestEA analysis.
+
+This module provides tools to compare different clustering results pairwise,
+evaluating how similar or different the cluster assignments are between runs.
+Key features:
+
+- Compares clustering results from different parameter combinations
+- Handles comparison with random baseline clustering
+- Calculates metrics like F1 score and adjusted Rand index
+- Uses Hungarian method to match cluster labels between runs
+- Supports both single comparisons and batch processing
+- Can output results as JSON for further analysis
+
+The main entry point is CompareResultsPairwise() which takes a directory of
+clustering results and generates pairwise comparisons between all runs.
+"""
+
 import json
 import pandas as pd
 import copy

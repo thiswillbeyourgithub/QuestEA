@@ -152,8 +152,8 @@ class Dataloader:
 
     def _load_inventory_text(
             self,
-            name,
-            ):
+            name: str,
+            ) -> pd.DataFrame:
         whi(f"Loading code for {name}")
         assert self.targetdatapath.exists(), f"{self.targetdatapath} not found"
 
@@ -389,7 +389,7 @@ class Dataloader:
         whi("Done loading df_answ\n")
         return df_answ
 
-    def _load_dataset_RutledgeSmartphone(self):
+    def _load_dataset_RutledgeSmartphone(self) -> pd.DataFrame:
         assert (self.targetdatapath / "Rutledge_GBE_risk_data_TOD.mat").exists(), "missing dataset"
         mat = scipy.io.loadmat(str(self.targetdatapath / "Rutledge_GBE_risk_data_TOD.mat"))
         dep = pd.DataFrame(mat["depData"].reshape(-1))
@@ -447,7 +447,7 @@ class Dataloader:
                     )
         return df_answ
 
-    def _load_dataset_Hamilton(self):
+    def _load_dataset_Hamilton(self) -> pd.DataFrame:
         whi("Loading data file")
 
         assert (self.targetdatapath / "Screening_Hamilton_Final.sav").exists(), (
@@ -587,7 +587,7 @@ class Dataloader:
 
         return df_answ
 
-    def _load_dataset_HEXACO(self):
+    def _load_dataset_HEXACO(self) -> pd.DataFrame:
         df_text = self.df_text
 
         whi("Loading data file")
@@ -739,7 +739,7 @@ class Dataloader:
 
         return df_answ
 
-    def _load_dataset_big5(self):
+    def _load_dataset_big5(self) -> pd.DataFrame:
         # positive questions adding to the trait.
         pos_questions = [
             'EXT1', 'EXT3', 'EXT5', 'EXT7', 'EXT9',                        # 5

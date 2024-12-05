@@ -137,8 +137,8 @@ def compareOnePair(pathA, pathB, testing_mode, verbose):
     assert df_A["df_shape_nid"].equals(df_B["df_shape_nid"]), "A and B don't share df_shape_nid!"
 
     # check if the subject id of the prediction differ
-    sa = set([l[0] for l in predA.index.tolist()])
-    sb = set([l[0] for l in predB.index.tolist()])
+    sa = set([li[0] for li in predA.index.tolist()])
+    sb = set([li[0] for li in predB.index.tolist()])
     diff = sorted(list(sa ^ sb))
     if diff:
         common_ids = sa & sb

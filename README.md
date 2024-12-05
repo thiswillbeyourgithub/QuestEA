@@ -262,7 +262,12 @@ The following results should be interpreted with extreme caution:
 * Should not be used for any clinical decisions
 
 Key findings from our **initial** experiments:
-[TODO]
+
+* Interesting results for the Rutledge BDI dataset:
+    * Almost all models perform well with aggregated features, but not with raw features
+    * This is particularly noteworthy because the models ultimately take raw features as input
+    * The fact that results correlate well with aggregated features is remarkable, especially since the aggregated features themselves don't correlate strongly with raw features
+    * Note: Data preprocessing included projection onto a circle
 
 # Roadmap / TODOs
 <!-- BEGIN_TODO -->

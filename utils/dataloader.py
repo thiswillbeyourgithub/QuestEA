@@ -366,8 +366,8 @@ class Dataloader:
 
     def _load_and_process_inventory_answers(
             self,
-            name,
-            ):
+            name: str,
+            ) -> pd.DataFrame:
         if name == "IPIP":
             df_answ = self._load_dataset_big5()
         elif name == "DASS":
@@ -419,7 +419,7 @@ class Dataloader:
                     dtype=np.float32)
         return df_answ
 
-    def _load_dataset_AdolescentDepressionSRQA(self, invent):
+    def _load_dataset_AdolescentDepressionSRQA(self, invent: str) -> pd.DataFrame:
         assert (self.targetdatapath / "Adolescent_SRQ_data.sav").exists(), (
             "sav file not found")
         df_answ = pd.read_spss(
@@ -502,7 +502,7 @@ class Dataloader:
 
         return df_answ
 
-    def _load_dataset_16PF(self):
+    def _load_dataset_16PF(self) -> pd.DataFrame:
         df_text = self.df_text
 
         whi("Loading data file")
@@ -660,7 +660,7 @@ class Dataloader:
 
         return df_answ
 
-    def _load_dataset_DASS(self):
+    def _load_dataset_DASS(self) -> pd.DataFrame:
         df_text = self.df_text
 
         whi("Loading data file")

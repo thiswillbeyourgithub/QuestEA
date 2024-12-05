@@ -29,6 +29,7 @@ from utils.misc import (set_global_logging_level, whi, yel, red,
                         _get_sentence_encoder,
                         IgnoreInGrid
                         )
+from utils.bvae.bvae import OptimizedBVAE
 
 try:
     from sklearnex import patch_sklearn
@@ -36,10 +37,6 @@ try:
 except Exception as err:
     print(f"Exception when patching sklearn: '{err}'")
 
-try:
-    from .utils.bvae import OptimizedBVAE
-except Exception:
-    from utils.bvae import OptimizedBVAE
 
 
 # reduce logging verbosity

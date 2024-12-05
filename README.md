@@ -92,6 +92,23 @@ This process creates a rich representation that captures both:
 * Since this is a completely new approach to analyzing questionnaire data, there is no ground truth to validate against. Therefore, we rely on intrinsic metrics (like Calinski-Harabasz, Davies-Bouldin, and Silhouette scores) to evaluate the quality of the clustering results.
 * These metrics help us assess how well-defined and separated the clusters are, without needing external validation data.
 
+### What are the metrics used?
+* We use several complementary clustering quality metrics:
+    * Calinski-Harabasz Index (higher is better):
+        * Measures ratio of between-cluster to within-cluster variance
+        * Higher scores indicate better-defined clusters
+        * Particularly effective for convex, well-separated clusters
+    * Davies-Bouldin Index (lower is better):
+        * Measures average similarity between clusters
+        * Compares cluster separation vs cluster size
+        * Scores closer to zero indicate better clustering
+        * Limited to Euclidean space due to centroid usage
+    * Silhouette Score (between -1 and +1):
+        * Measures how similar points are to their own cluster vs other clusters
+        * +1 indicates dense, well-separated clusters
+        * 0 indicates overlapping clusters
+        * -1 indicates incorrect clustering
+* All these metrics work best with convex clusters and may not capture quality as well for density-based or irregularly shaped clusters
 
 # How to use
 ### Prerequisites

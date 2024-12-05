@@ -10,6 +10,10 @@
 
 ### How does it work?
 
+### Why did you use those specific metrics?
+* Since this is a completely new approach to analyzing questionnaire data, there is no ground truth to validate against. Therefore, we rely on intrinsic metrics (like Calinski-Harabasz, Davies-Bouldin, and Silhouette scores) to evaluate the quality of the clustering results.
+* These metrics help us assess how well-defined and separated the clusters are, without needing external validation data.
+
 
 # How to use
 ### Prerequisites

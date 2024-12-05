@@ -82,6 +82,12 @@ This process creates a rich representation that captures both:
         * Any other structured or unstructured patient data
     * Creates a unified way to represent and analyze diverse patient information
 
+* Historical Data Mining:
+    * Enables re-analysis of decades of historical survey data through modern embedding techniques
+    * Can extract new insights from existing qualitative data like clinical observations and personality assessments
+    * This vast amount of historical data could provide crucial insights into the ongoing upheaval in psychiatric classification
+    * Potential to discover patterns that were impossible to detect with traditional analysis methods
+
 ### What are the main challenges in this approach?
 * This is a completely new way to analyze questionnaire data that has never been done before. There is no established ground truth for patient data in this context since we're measuring it in a novel way.
 * The high-dimensional nature of the data makes it particularly challenging to analyze intuitively. Human intuition breaks down when dealing with multidimensional spaces.

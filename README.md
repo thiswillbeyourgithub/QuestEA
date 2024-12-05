@@ -1,4 +1,7 @@
 # QuestEA
+
+QuestEA is an exploratory research project investigating a novel approach to analyzing patient survey data by combining numerical responses with the semantic meaning of questions through embeddings. While still in early experimental stages, this academic work explores whether incorporating question semantics could potentially enhance our understanding of patient data and survey design. This is a proof-of-concept study and should not be used for clinical decisions.
+
 ## Innovative approach to extracting information from patient survey
 
 ## FAQ

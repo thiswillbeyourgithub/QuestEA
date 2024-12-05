@@ -13,6 +13,44 @@
 * As I'm currently an independant researcher, I don't have access to a lot of data so I reach out to an official lab and am waiting to be granted access to official data.
 
 ### How does it work?
+The process of turning patients into embeddings involves several technical steps:
+
+1. Data Loading and Preprocessing:
+   * Patient survey answers are loaded as numerical values
+   * Data is normalized using either L1 or L2 normalization (configurable)
+   * Survey questions are loaded as text
+
+2. Embedding Generation:
+   * For raw feature mode (`feat_raw`/`feat_agg`):
+     * Uses the normalized survey answers directly
+     * Can use either raw question answers or aggregated scores
+   * For LLM mode (`llm_*`):
+     * Survey questions are embedded using one of:
+       * OpenAI's API
+       * SBERT models (e.g., CLIP-ViT-B-32)
+       * Custom embedding models
+     * Patient answers are combined with question embeddings using element-wise multiplication
+     * The result is normalized again (L1/L2)
+     * Each patient ends up with a vector of the same dimension as the question embeddings
+
+3. Dimension Reduction (Optional):
+   * Can reduce dimensions using:
+     * PCA (Principal Component Analysis)
+     * NMF (Non-negative Matrix Factorization)
+     * UMAP (Uniform Manifold Approximation and Projection)
+     * Dictionary Learning
+     * BVAE (Beta Variational Autoencoder)
+   * Number of output dimensions is configurable
+
+4. Final Processing:
+   * Results are stored in a pandas DataFrame
+   * Each row represents a patient
+   * Each column represents a dimension in the embedding space
+   * The embeddings can then be used for clustering, visualization, or other analyses
+
+This process creates a rich representation that captures both:
+* The patient's specific answers (through the numerical values)
+* The semantic meaning of the questions (through the embeddings)
 
 ### How could this help optimize and integrate surveys?
 * Survey Optimization:

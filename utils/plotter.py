@@ -1,3 +1,25 @@
+"""
+Visualization module for QuestEA clustering results.
+
+This module provides tools to visualize and compare clustering results through:
+
+- Network graphs showing relationships between different clustering methods
+  * Node colors indicate feature types (raw/aggregated)
+  * Edge weights show similarity between clustering results
+  * Edge labels display numerical similarity scores
+  
+- Multiple heatmap visualizations:
+  * F1 scores between clustering methods
+  * Adjusted Rand Index comparisons
+  * Performance vs random baseline
+  * Intrinsic metrics (Davies-Bouldin, Calinski-Harabasz, Silhouette)
+  * Correlation analysis between metrics
+
+The main entry point is the main() function which takes a results directory
+and generates a comprehensive set of visualizations for analyzing clustering
+quality and relationships between different parameter combinations.
+"""
+
 from datetime import datetime
 import json
 from pathlib import Path

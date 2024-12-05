@@ -25,6 +25,7 @@ import scipy.io
 import re
 import os
 import ftfy
+from typing import Optional, Union
 from bs4 import BeautifulSoup
 from pathlib import Path
 from sklearn.preprocessing import Normalizer
@@ -55,9 +56,9 @@ dataset_list = [
 class Dataloader:
     def __init__(
             self,
-            datasetname,
-            mode,
-            norm_f,
+            datasetname: str,
+            mode: str,
+            norm_f: Union[str, Normalizer],
             ):
         """
         takes as input the datasetname, the mode and the norm.

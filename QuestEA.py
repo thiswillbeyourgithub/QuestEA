@@ -80,62 +80,61 @@ class QuestEA:
         """
         Parameters
         ----------
-        mode: str
-            either feat_raw, feat_agg or feat_raw_no_norm or feat_agg_no_norm
+        mode : str
+            Either feat_raw, feat_agg or feat_raw_no_norm or feat_agg_no_norm
             or starts with llm_
 
             * 'feat' stands for 'features' and means that the input of the
-            clutering method will be straight from the user answer to the
-            inventory. Either directly take the normalized outputs as features
-            or use a post processing. For example the 5 factor is made of
-            40 questions, so feat_raw means 40 dimensions where each dimension
-            is the answer to a question and feat_agg means 5 dimensions wheree
-            each dimension is one of the computed factor according to the
-            inventory designer's formula.
+              clustering method will be straight from the user answer to the
+              inventory. Either directly take the normalized outputs as features
+              or use a post processing. For example the 5 factor is made of
+              40 questions, so feat_raw means 40 dimensions where each dimension
+              is the answer to a question and feat_agg means 5 dimensions where
+              each dimension is one of the computed factor according to the
+              inventory designer's formula.
             * 'llm_' need to be either 'llm_openai' or be followed by
-            the name from a pretrained model at
-            https://www.sbert.net/docs/pretrained_models.html#sentence-embedding-models/
-            For example: 'llm_clip-ViT-B-32' (case sensitive)
-            OR can be 'llm_random' which is used for testing. It returns
-            random vectors.
-        result_dir: str
-            default './results_ignore_backups/'
-            path to where the raw results will be stored. This dir makes
+              the name from a pretrained model at
+              https://www.sbert.net/docs/pretrained_models.html#sentence-embedding-models/
+              For example: 'llm_clip-ViT-B-32' (case sensitive)
+              OR can be 'llm_random' which is used for testing. It returns
+              random vectors.
+        result_dir : str, optional
+            Path to where the raw results will be stored. This dir makes
             the link between QuestEA and the utils scripts to compare and
-            plot.
-        note: str
-            str to annotate results
-        sample_to_keep: int
-            number of sample to keep from the dataset. If None, will keep all the data
+            plot. Default is './results_ignore_backups/'.
+        note : str
+            String to annotate results.
+        sample_to_keep : int, optional
+            Number of samples to keep from the dataset. If None, will keep all the data.
             If testing is True, will keep even less.
-        datasetname: str
-            name of the dataset to load
-        n_components: int, default to None
-            if int, number of dimensions to keep with the dimred method.
-        norm: str, default to "l2"
-            either l1 or l2 norm. Passed to the dataloader and applied at
-            several key steps.
-        testing: bool, default False
-            if True, only try on 1000 points.
-        skip_plot: bool, default True
-            if False, will create and save plot
-        show_plot: bool, default False
-            if True, will automatically open the plot instead of just saving it
-        n_cpus: int, default -1
-            used when using batch processing to compute patient embedding
-            based on the answer to the inventory
-        cluster_method: str, default 'kmeans'
-            kmeans, bisectingkmeans or spectralcosine
-            lowercase is applied
-        n_cluster: str, default '2-8'
-            if '2-8' then will look for cluter for k in range(2, 9)
-        dimred_method: str, default 'pca'
-            can be pca, umap, nmf, dictionnarylearning, bvae
-        skip_embeddings_cache: bool, default False
-            if True, will recompute all embeddings instead of computing them. This
-            can imply cost if you are not self hosting an embedding model.
-        verbose: bool, default False
-            increase verbosity
+        datasetname : str
+            Name of the dataset to load.
+        n_components : int, optional
+            If int, number of dimensions to keep with the dimred method. Default is None.
+        norm : str, optional
+            Either l1 or l2 norm. Passed to the dataloader and applied at
+            several key steps. Default is "l2".
+        testing : bool, optional
+            If True, only try on 1000 points. Default is False.
+        skip_plot : bool, optional
+            If False, will create and save plot. Default is True.
+        show_plot : bool, optional
+            If True, will automatically open the plot instead of just saving it. Default is False.
+        n_cpus : int, optional
+            Used when using batch processing to compute patient embedding
+            based on the answer to the inventory. Default is -1.
+        cluster_method : str, optional
+            Kmeans, bisectingkmeans or spectralcosine.
+            Lowercase is applied. Default is 'kmeans'.
+        n_cluster : str, optional
+            If '2-8' then will look for cluster for k in range(2, 9). Default is '2-8'.
+        dimred_method : str, optional
+            Can be pca, umap, nmf, dictionnarylearning, bvae. Default is 'pca'.
+        skip_embeddings_cache : bool, optional
+            If True, will recompute all embeddings instead of computing them. This
+            can imply cost if you are not self hosting an embedding model. Default is False.
+        verbose : bool, optional
+            Increase verbosity. Default is False.
         """
         # argument validity checking
         if args:

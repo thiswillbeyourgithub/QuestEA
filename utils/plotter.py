@@ -17,11 +17,31 @@ exclude_list = [
         ]
 
 def main(
-        paths=None,
-        open_plot=True,
-        behavior=None,
-        k=None,
+        paths: str = None,
+        open_plot: bool = True,
+        behavior: str = None,
+        k: int = None,
         ):
+    """
+    Generate and display various plots and heatmaps for clustering results comparison.
+
+    This function reads clustering results from a JSON file, processes the data,
+    and creates several visualizations including:
+    - A network graph showing relationships between different clustering methods
+    - Heatmaps for F1 scores, Rand Index scores, and their comparisons against random guessing
+    - Heatmaps for intrinsic metrics of clustering quality
+
+    The function can either display the plots, save them to files, or both, depending on the parameters.
+
+    Args:
+        paths (str): Path to the directory containing the results JSON file.
+        open_plot (bool): If True, display the plots. Default is True.
+        behavior (str): Determines whether to 'return', 'store', or do 'both' with the generated plots.
+        k (int): The number of clusters to use for the analysis.
+
+    Returns:
+        dict: A dictionary of plot figures if behavior is set to 'return' or 'both'.
+    """
     if paths is None:
         raise Exception("You have to supply the path to the results")
     k = str(k)

@@ -322,6 +322,6 @@ Key findings from our **initial** experiments:
 - use a metric that takes monotony into account
     - if the function is not monotonic then there's a peak that shows a better clustering on a given metric
         - especially curious for the results on Big5 data
-- See if you can get your hands on STAR*D data, HBNN data, UKB data
 - In the random vector test, add a test with one hot vectors and few hot vectors
+- See if you can get your hands on STAR*D data, HBNN data, UKB data
 <!-- END_TODO -->

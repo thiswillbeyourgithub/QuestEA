@@ -13,7 +13,7 @@ QuestEA is an exploratory research project investigating a novel approach to ana
 * This approach is fundamentally richer than traditional methods that simply abstract questions into a list of integers (checked or not checked).
 
 ### Status?
-* As I'm currently an independant researcher, I don't have access to a lot of data so I reach out to an official lab and am waiting to be granted access to official data.
+* As I'm currently an independant researcher, I don't have access to a lot of data so I reach out to an official lab and am waiting to be granted access to official data. In the meantime this is just an experimental repository.
 
 ### How does it work?
 The process of turning patients into embeddings involves several technical steps:

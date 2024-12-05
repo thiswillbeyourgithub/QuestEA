@@ -10,6 +10,25 @@
 
 ### How does it work?
 
+### How could this help optimize and integrate surveys?
+* Survey Optimization:
+    * Identifies redundant questions through correlation analysis
+    * Reveals non-linear relationships between questions that only become apparent after dimensional reduction (UMAP/PaCMAP)
+    * Helps create more efficient questionnaires by removing unnecessary redundancy
+
+* Better Patient Comparison:
+    * Enables comparison of patients across studies with different survey combinations
+    * Example: Compare three datasets where patients completed different pairs of surveys from a set of three
+    * Traditional methods can't compare these patients, but QuestEA can project them into a common space
+
+* Rich Data Integration:
+    * Patient vector representation allows natural integration with:
+        * Consultation summary embeddings
+        * Camera feed data
+        * ICD coding
+        * Any other structured or unstructured patient data
+    * Creates a unified way to represent and analyze diverse patient information
+
 ### What are the main challenges in this approach?
 * This is a completely new way to analyze questionnaire data that has never been done before. There is no established ground truth for patient data in this context since we're measuring it in a novel way.
 * The high-dimensional nature of the data makes it particularly challenging to analyze intuitively. Human intuition breaks down when dealing with multidimensional spaces.

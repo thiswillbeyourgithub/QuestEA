@@ -1,3 +1,26 @@
+"""
+Questionnaire data loader for QuestEA (Questionnaire Embeddings Analysis).
+
+This module provides a unified interface for loading and preprocessing various
+psychological questionnaire datasets. Key features:
+
+- Supports multiple questionnaire formats (IPIP, DASS, HEXACO, Hamilton, etc.)
+- Handles both raw responses and aggregated scores
+- Performs data cleaning and validation:
+  * Removes incomplete responses
+  * Filters by response time and quality
+  * Handles reverse-scored items
+  * Normalizes responses (L1/L2 norm)
+- Supports different output modes:
+  * Raw features: Individual question responses
+  * Aggregated features: Combined dimension scores
+  * LLM-ready format: Prepared for language model processing
+
+The main entry point is the Dataloader class which takes a dataset name,
+processing mode, and normalization parameters to produce standardized
+DataFrame outputs for both questions and responses.
+"""
+
 import scipy.io
 import re
 import os

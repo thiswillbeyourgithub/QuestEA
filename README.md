@@ -11,6 +11,44 @@
 ### How does it work?
 
 
+# How to use
+### Prerequisites
+1. Create a `dataset` folder in the project root
+2. Download each dataset mentioned in the "List of datasets" section below by following their respective URLs
+3. Place the downloaded datasets in the `dataset` folder
+
+### Running the grid search
+The `grid_search.py` script performs a comprehensive analysis across multiple parameters:
+
+```bash
+# Basic usage
+python grid_search.py
+
+# Run with custom directories
+python grid_search.py --logdir=./my_logs --resultdir=./my_results
+
+# Run in testing mode (smaller dataset)
+python grid_search.py --testing
+
+# Enable debug mode
+python grid_search.py --debug
+
+# Enable verbose output
+python grid_search.py --verbose
+```
+
+The script will:
+1. Process each dataset through multiple embedding methods
+2. Apply various dimensionality reduction techniques
+3. Perform clustering with different methods
+4. Generate visualizations and metrics
+5. Save results in the specified directories
+
+View results in tensorboard:
+```bash
+tensorboard --logdir=./tensorboard_runs
+```
+
 # Notes
 * Many docstrings in this project were initially generated using [aider](https://aider.chat/) and were quickly reviewed for validity
 

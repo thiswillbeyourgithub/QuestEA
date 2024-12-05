@@ -10,16 +10,36 @@ import numpy as np
 from scipy.optimize import linear_sum_assignment
 from sklearn.metrics import adjusted_rand_score, f1_score
 from joblib import Parallel, delayed
+from typing import Optional, List, Dict, Any, Union, Tuple
 
 from .misc import whi
 
 
 def CompareResultsPairwise(
-        paths=None,
-        behavior=None,
-        testing=False,
-        verbose=False,
-        ):
+        paths: Optional[str] = None,
+        behavior: Optional[str] = None,
+        testing: bool = False,
+        verbose: bool = False,
+        ) -> Optional[List[Dict[str, Any]]]:
+    """
+    Step 3 of the QuestEA pipeline: Compare results pairwise.
+
+    This function runs on the output of step 1 to compare the clustering results.
+    It performs pairwise comparisons between all the result files found in the
+    specified path, including a comparison with random guessing.
+
+    Args:
+        paths (str): Path to the directory containing the result files from step 1.
+        behavior (str): Determines how results are handled. Must be "return", "store", or "both".
+        testing (bool): If True, runs in testing mode with reduced parallelism.
+        verbose (bool): If True, prints detailed progress information.
+
+    Returns:
+        list: If behavior is "return" or "both", returns a list of comparison results.
+
+    Raises:
+        Exception: If paths is not provided or if behavior is invalid.
+    """
     assert behavior in ["return", "store", "both"], "invalid behavior value"
     if paths is None:
         raise Exception("You have to supply the path to the results")
@@ -106,7 +126,32 @@ def CompareResultsPairwise(
         return results2
 
 
-def compareOnePair(pathA, pathB, testing_mode, verbose):
+def compareOnePair(pathA: str, pathB: str, testing_mode: bool, verbose: bool) -> Dict[str, Any]:
+    """
+    Compare two clustering result files pairwise.
+
+    This function loads two clustering result files, compares their predictions,
+    and calculates various metrics to assess their similarity and performance.
+
+    Args:
+        pathA (str): Path to the first clustering result file.
+        pathB (str): Path to the second clustering result file or "randomGuess" for random comparison.
+        testing_mode (bool): If True, enables testing mode with relaxed assertions.
+        verbose (bool): If True, prints detailed progress information.
+
+    Returns:
+        dict: A dictionary containing comparison results, including:
+            - Clustering parameters for both files
+            - Performance metrics (e.g., F1 score, adjusted Rand index)
+            - Intrinsic metrics
+            - File paths and dimensions
+
+    Raises:
+        Exception: If there's a mismatch in subject IDs between the two files (unless in testing mode).
+
+    Note:
+        If pathB is "randomGuess", it generates random predictions for comparison.
+    """
     if verbose:
         tqdm.write(f"\n\n######\n* {pathA.split('/')[-1]}\n* {pathB.split('/')[-1]}")
     assert pathA != "randomGuess", "invalid randomguess in pathA"
@@ -200,13 +245,13 @@ def compareOnePair(pathA, pathB, testing_mode, verbose):
 
     return out
 
-def score_func(pred1, pred2):
+def score_func(pred1: np.ndarray, pred2: np.ndarray) -> Dict[str, float]:
     return {
             "randindex": adjusted_rand_score(pred1, pred2),
             "f1":  (f1_score(pred1, pred2, average="micro") + f1_score(pred2, pred1, average="micro")) / 2,
             }
 
-def remap_label_then_score(pred1, pred2, verbose):
+def remap_label_then_score(pred1: np.ndarray, pred2: np.ndarray, verbose: bool) -> Tuple[Dict[str, float], np.ndarray, np.ndarray]:
     """ 
     Hungarian method to remap labels and then score the predictions.
 
@@ -257,7 +302,7 @@ def remap_label_then_score(pred1, pred2, verbose):
     return scores, pred1, pred2
 
 
-def mean(li):
+def mean(li: np.ndarray) -> np.ndarray:
     "easier to read"
     return sum(li)/len(li)
 

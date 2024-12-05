@@ -21,9 +21,16 @@ The process of turning patients into embeddings involves several technical steps
    * Survey questions are loaded as text
 
 2. Embedding Generation:
-   * For raw feature mode (`feat_raw`/`feat_agg`):
-     * Uses the normalized survey answers directly
-     * Can use either raw question answers or aggregated scores
+   * For raw feature mode:
+     * `feat_raw`: Uses individual answers to each question
+       * Preserves the most granular information
+       * Example: In a depression survey with 20 questions, creates a 20-dimensional vector
+       * Each dimension represents the patient's specific answer to each question
+     * `feat_agg`: Uses pre-computed aggregate scores
+       * Uses established scoring methods from the survey designers
+       * Example: A depression survey might aggregate 20 questions into 4 clinical subscales
+       * Each dimension represents a validated clinical construct
+     * Both modes can optionally apply L1/L2 normalization
    * For LLM mode (`llm_*`):
      * Survey questions are embedded using one of:
        * OpenAI's API

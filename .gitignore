@@ -2,3 +2,4 @@ datasets
 results
 API_KEY.txt
 logs/
+__pycache__

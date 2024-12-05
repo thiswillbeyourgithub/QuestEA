@@ -4,7 +4,6 @@ import os
 from pathlib import Path
 from sklearn.model_selection import GridSearchCV, ParameterGrid
 from tqdm import tqdm
-import random
 from shutil import rmtree
 
 from QuestEA import QuestEA

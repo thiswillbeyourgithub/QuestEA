@@ -1,6 +1,8 @@
 import psutil
 from tqdm import tqdm
 import time
+from typing import List, Optional, Union
+import pandas as pd
 
 class DynamicBatchIterator:
     """
@@ -8,27 +10,28 @@ class DynamicBatchIterator:
     a specific cpu load target. Also comes with a nice
     progress bar.
     """
-    def __init__(self, df, n_cpus, min_batch=50, max_batch=500, target_cpu=90, crop_df=False, tqdmlogger=None):
-        self.df = df
-        self.todo = self.df.index.tolist()
-        self.max_batch = max_batch
-        self.min_batch = min_batch
-        self.target_cpu = target_cpu
-        self.n_cpus = n_cpus
-        self.current_batch_size = min_batch
-        self.pbar = tqdm(
+    def __init__(self, df: pd.DataFrame, n_cpus: int, min_batch: int = 50, max_batch: int = 500, 
+                 target_cpu: int = 90, crop_df: bool = False, tqdmlogger: Optional[Union[str, 'tqdm']] = None):
+        self.df: pd.DataFrame = df
+        self.todo: List[Union[str, int]] = self.df.index.tolist()
+        self.max_batch: int = max_batch
+        self.min_batch: int = min_batch
+        self.target_cpu: int = target_cpu
+        self.n_cpus: int = n_cpus
+        self.current_batch_size: int = min_batch
+        self.pbar: tqdm = tqdm(
                 total=len(self.todo),
                 desc="Processing users",
                 smoothing=0.0,
                 file=tqdmlogger,
                 )
-        self.latest = time.time()
-        self.crop_df = crop_df
+        self.latest: float = time.time()
+        self.crop_df: bool = crop_df
 
-    def __iter__(self):
+    def __iter__(self) -> 'DynamicBatchIterator':
         return self
 
-    def __next__(self):
+    def __next__(self) -> pd.DataFrame:
         if len(self.todo) == 0:
             self.pbar.close()
             raise StopIteration
@@ -50,15 +53,15 @@ class DynamicBatchIterator:
         [self.todo.remove(t) for t in batch_ids]
         return batch
 
-    def _adjust_cpu(self):
+    def _adjust_cpu(self) -> None:
         # Check system load average
         # 0: 1 min, 1: 5min, 2: 15 min
         #load_avg = psutil.getloadavg()[0]
         # use cpu
         if self.n_cpus == -1:
-            cpu = psutil.cpu_percent()
+            cpu: float = psutil.cpu_percent()
         else:
-            cpu = sum(psutil.cpu_percent(percpu=True)[:self.n_cpus]) / self.n_cpus
+            cpu: float = sum(psutil.cpu_percent(percpu=True)[:self.n_cpus]) / self.n_cpus
 
         if cpu >= 1.0:  # psutil returns 0.0 sometimes for good reasons
             self.latest = time.time()

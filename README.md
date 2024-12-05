@@ -5,6 +5,9 @@
 ### What is this?
 * QuestEA (QuestionnaireEmbeddingsAnalysis), is an experimental technique by me to better extract data from patient surveys / questionnaires.
 
+### Status?
+* As I'm currently an independant researcher, I don't have access to a lot of data so I reach out to an official lab and am waiting to be granted access to official data.
+
 
 # List of datasets used
 

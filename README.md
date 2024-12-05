@@ -1,10 +1,9 @@
 # QuestEA
-## innovative approach to extracting information from patient survey
+## Innovative approach to extracting information from patient survey
 
 ## FAQ
 ### What is this?
-* QuestEA (QuestionnaireEmbeddingsAnalysis), is an experimental technique to better extract data from patient questionnaires.
-
+* QuestEA (QuestionnaireEmbeddingsAnalysis), is an experimental technique by me to better extract data from patient surveys / questionnaires.
 
 
 # List of datasets used
@@ -32,7 +31,7 @@
 </details>
 
 
-### adolescent depression data: Social Reward Questionnaire Adolescent
+### Adolescent depression data: Social Reward Questionnaire Adolescent
 
 <details><summary>More</summary>
 

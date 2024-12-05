@@ -1,3 +1,23 @@
+"""
+QuestEA: Questionnaire Embedding and Analysis
+
+Usage:
+    python QuestEA.py --mode=<mode> --datasetname=<dataset> [additional options]
+
+Example:
+    python QuestEA.py --mode=llm_openai --datasetname=big5 --n_components=10 --cluster_method=kmeans
+
+Main steps:
+1. Load and preprocess the dataset
+2. Embed the inventory (if using LLM mode)
+3. Perform dimension reduction (if specified)
+4. Apply clustering algorithm
+5. Compute intrinsic metrics
+6. Generate and save results and plots
+
+For detailed parameter descriptions, refer to the QuestEA class docstring.
+"""
+
 import logging
 import pickle
 import psutil

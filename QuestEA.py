@@ -31,12 +31,12 @@ from utils.misc import (set_global_logging_level, whi, yel, red,
                         )
 from utils.bvae.bvae import OptimizedBVAE
 
+# patch sklearn makes it faster
 try:
     from sklearnex import patch_sklearn
     patch_sklearn()
 except Exception as err:
     print(f"Exception when patching sklearn: '{err}'")
-
 
 
 # reduce logging verbosity

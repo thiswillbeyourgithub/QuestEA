@@ -50,7 +50,7 @@ tensorboard --logdir=./tensorboard_runs
 ```
 
 # Notes
-* Many docstrings in this project were initially generated using [aider](https://aider.chat/) and were quickly reviewed for validity
+* Many docstrings in this project were initially generated using [aider](https://aider.chat/) and were quickly reviewed for validity. The clarity of the code is also somewhat below my standards but should be okay.
 - No requirements.txt file is provided, you are expected to install the needed package as you get ImportError, PR welcome
 
 # List of datasets used

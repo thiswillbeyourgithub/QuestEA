@@ -280,7 +280,7 @@ def openai_sentence_encoder(sentences, vectorizer, model_name):
 log_formatter = logging.Formatter(
         '%(asctime)s %(levelname)s %(funcName)s(%(lineno)d) %(message)s')
 file_handler = handlers.RotatingFileHandler(
-        "logs.txt",
+        "logs/logs.txt",
         mode='a',
         maxBytes=1000000,
         backupCount=3,

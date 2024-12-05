@@ -116,6 +116,17 @@ This process creates a rich representation that captures both:
         * -1 indicates incorrect clustering
 * All these metrics work best with convex clusters and may not capture quality as well for density-based or irregularly shaped clusters
 
+### What key questions do you hope to answer with this approach?
+* The primary question is whether we can predict treatment response earlier:
+    * Can we identify which patients will respond better to treatment A vs B?
+    * This could help optimize treatment paths from the start
+    * Could reduce time spent on ineffective treatments
+    * Potentially improve patient outcomes through faster matching to effective treatments
+* Other important questions include:
+    * Can we identify novel patient subgroups that traditional methods miss?
+    * Are there hidden patterns in historical survey data that could inform current diagnostic practices?
+    * Can we better understand the relationship between different psychiatric conditions through their embedding patterns?
+
 # How to use
 ### Prerequisites
 1. Create a `dataset` folder in the project root

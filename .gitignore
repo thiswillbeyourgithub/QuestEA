@@ -3,3 +3,5 @@ results
 API_KEY.txt
 logs/
 __pycache__
+.aider*
+.env

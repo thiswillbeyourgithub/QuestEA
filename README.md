@@ -18,7 +18,7 @@ QuestEA is an exploratory research project investigating a novel approach to ana
 ### Who's behind this project?
 * This is a solo project developed during medical school
 * It started as a way to explore novel approaches to analyzing patient data while learning about machine learning and natural language processing
-* The project benefits from feedback and discussions with other researchers, but all development is done independently
+* The project benefits from feedback and discussions with other researchers, but all development is done independently. I want to thank Marc B. and Ivan B. as well as Fabien V.
 
 ### How does it work?
 The process of turning patients into embeddings involves several technical steps:

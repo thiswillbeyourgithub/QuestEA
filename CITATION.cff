@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this repository/code/software/ideas/etc, please cite it as below."
+authors:
+  - family-names: Cornelis
+    given-names: Olivier
+    orcid: https://orcid.org/0000-0002-5445-4679
+title: "QuestEA"
+version: 1.0.0
+date-released: 2024-06-12

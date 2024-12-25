@@ -3,6 +3,7 @@ datasets
 results
 API_KEY.txt
 logs/
+logs.*
 __pycache__
 .aider*
 .env

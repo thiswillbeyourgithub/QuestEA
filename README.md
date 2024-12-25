@@ -149,6 +149,7 @@ This process creates a rich representation that captures both:
 1. Create a `dataset` folder in the project root
 2. Download each dataset mentioned in the "List of datasets" section below by following their respective URLs
 3. Place the downloaded datasets in the `dataset` folder
+4. Install the needed libraries via `python -m pip install -r requirements.txt` (*Note: it seems that `uv` sometimes fail to install umap whereas `pip` works*)
 
 ### Running the grid search
 The `grid_search.py` script performs a comprehensive analysis across multiple parameters:
@@ -184,7 +185,6 @@ tensorboard --logdir=./tensorboard_runs
 
 # Notes
 * Many docstrings in this project were initially generated using [aider](https://aider.chat/) and were quickly reviewed for validity. The clarity of the code is also somewhat below my standards but should be okay.
-- No requirements.txt file is provided, you are expected to install the needed package as you get ImportError, PR welcome
 
 # List of datasets used
 

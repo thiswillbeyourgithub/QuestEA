@@ -125,7 +125,12 @@ def do_grid_search(
             "n_cluster": ["2-9"],
             "norm": ["l2"],
             "cluster_method": ["kmeans"], #"spectralcosine"],  # "bisectingkmeans"],  # kmeans, SpectralCosine
-            "dimred_method": ["pca", "umap", "bvae", "dictionnarylearning"],  # pca/umap/nmf/bvae/dictionnarylearning
+            "dimred_method": [
+                "pca",
+                "umap",
+                "bvae",
+                "dictionnarylearning"
+            ],  # pca/umap/nmf/bvae/dictionnarylearning
             "mode": [
 
                 "llm_random_10",

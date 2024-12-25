@@ -330,3 +330,18 @@ Key findings from our **initial** experiments:
 - In the random vector test, add a test with one hot vectors and few hot vectors
 - See if you can get your hands on STAR*D data, HBNN data, UKB data
 <!-- END_TODO -->
+
+## Citing & Authors
+
+If you find this repository helpful, feel free to cite this repo.
+
+```bibtex
+@software{cornelis2024questea,
+    author = {Cornelis, Olivier},
+    title = {QuestEA},
+    year = {2024},
+    version = {1.0.0},
+    date = {2024-06-12},
+    url = {https://orcid.org/0000-0002-5445-4679}
+}
+```

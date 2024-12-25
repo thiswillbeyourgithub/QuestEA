@@ -122,14 +122,14 @@ def do_grid_search(
         ]
     param_grid = ParameterGrid({
             # "norm": ["l1", "l2"],
-            "n_cluster": ["2-9"],
-            "norm": ["l2"],
+            "n_cluster": ["3-7"],
+            "norm": ["l1"],
             "cluster_method": ["kmeans"], #"spectralcosine"],  # "bisectingkmeans"],  # kmeans, SpectralCosine
             "dimred_method": [
                 "pca",
                 "umap",
-                "bvae",
-                "dictionnarylearning"
+                # "bvae",
+                # "dictionnarylearning"
             ],  # pca/umap/nmf/bvae/dictionnarylearning
             "mode": [
 
@@ -159,7 +159,7 @@ def do_grid_search(
                 "llm_openai",
                 ],
             "n_components": [10],
-            "sample_to_keep": [5_000],
+            "sample_to_keep": [1_000],
             "testing": [testing],
             "result_dir": [resultdir],
             "verbose": [verbose],

@@ -132,7 +132,7 @@ def _get_sentence_encoder(mode, cache, normalizer):
         model_name = mode[4:]
         # load cache sentence embedding model
         try:
-            model = SentenceTransformer(model_name)
+            model = SentenceTransformer(model_name.replace("___", "/"))
         except Exception as err:
             red(f"Error when loading sbert model '{model_name}': '{err}'")
             raise

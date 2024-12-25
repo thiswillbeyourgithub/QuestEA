@@ -142,6 +142,7 @@ def do_grid_search(
                 "feat_agg_no_norm",
 
                 # sbert models
+                "llm_joe32140___ModernBERT-large-msmarco",  # note: ___ gets replaced by a /
                 "llm_all-mpnet-base-v2",
                 "llm_clip-ViT-L-14",
                 "llm_clip-ViT-B-32-multilingual-v1",

@@ -35,7 +35,7 @@ import numpy as np
 # different import if imported or not
 try:
     from .misc import whi, red
-except Exception as err:
+except ImportError as err:
     print(f"Exception when loading from .misc: '{err}'")
     from misc import whi, red
 

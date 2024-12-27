@@ -1,69 +1,3 @@
-"""Grid search implementation for QuestEA (Questionnaire Embeddings Analysis).
-
-This script performs a comprehensive grid search over different parameters to analyze questionnaire data
-using various embedding and clustering techniques.
-
-Usage:
-    python grid_search.py [--logdir=DIR] [--resultdir=DIR] [--testing] [--debug] [--verbose]
-
-Arguments:
-    --logdir: Directory for tensorboard logs (default: ./tensorboard_runs)
-    --resultdir: Directory for results (default: ./results_ignore_backups/)
-    --testing: Run in testing mode with reduced dataset (default: False)
-    --debug: Enable debug mode with pdb post-mortem (default: False)
-    --verbose: Enable verbose output (default: False)
-
-The script:
-1. Iterates through multiple datasets:
-   - Hamilton (98 subjects)
-   - AdolescentDepressionSRQA (400 subjects)
-   - AdolescentDepressionCU (400 subjects)
-   - RutledgeSmartphone (1k subjects)
-   - DASS (6k subjects)
-   - HEXACO (12k subjects)
-   - 16PF (20k subjects)
-   - IPIP (25k+ subjects)
-
-2. For each dataset, tests combinations of:
-   - Embedding methods:
-     * Raw features (feat_raw)
-     * Aggregated features (feat_agg)
-     * Various SBERT models (all-mpnet-base-v2, clip-ViT, etc.)
-     * OpenAI embeddings
-     * Random embeddings for baseline
-   - Normalization techniques:
-     * L2 normalization
-   - Dimensionality reduction:
-     * PCA
-     * UMAP
-     * Beta-VAE
-     * Dictionary Learning
-   - Clustering methods:
-     * K-means
-     * Spectral Clustering (with cosine affinity)
-     * Bisecting K-means
-
-3. Evaluates clustering quality using multiple metrics:
-   - Davies-Bouldin score
-   - Calinski-Harabasz score
-   - Silhouette score
-
-4. Saves results and visualizations:
-   - Clustering predictions
-   - Embedding visualizations
-   - Quality metrics
-   - Comparison plots
-
-Results can be visualized using tensorboard:
-    tensorboard --logdir=./tensorboard_runs
-
-The tensorboard interface provides:
-- Interactive embedding visualizations
-- Clustering quality metrics over time
-- Pairwise comparison plots between different methods
-- Dataset statistics and metadata
-"""
-
 import time
 import pdb
 import os
@@ -91,8 +25,78 @@ def do_grid_search(
         testing=False,
         debug=False,
         verbose=False,
+        h=None,
+        help=None,
         **kwargs,
         ):
+    """Grid search implementation for QuestEA (Questionnaire Embeddings Analysis).
+
+    This script performs a comprehensive grid search over different parameters to analyze questionnaire data
+    using various embedding and clustering techniques.
+
+    Usage:
+        python grid_search.py [--logdir=DIR] [--resultdir=DIR] [--testing] [--debug] [--verbose]
+
+    Arguments:
+        --logdir: Directory for tensorboard logs (default: ./tensorboard_runs)
+        --resultdir: Directory for results (default: ./results_ignore_backups/)
+        --testing: Run in testing mode with reduced dataset (default: False)
+        --debug: Enable debug mode with pdb post-mortem (default: False)
+        --verbose: Enable verbose output (default: False)
+
+    The script:
+    1. Iterates through multiple datasets:
+    - Hamilton (98 subjects)
+    - AdolescentDepressionSRQA (400 subjects)
+    - AdolescentDepressionCU (400 subjects)
+    - RutledgeSmartphone (1k subjects)
+    - DASS (6k subjects)
+    - HEXACO (12k subjects)
+    - 16PF (20k subjects)
+    - IPIP (25k+ subjects)
+
+    2. For each dataset, tests combinations of:
+    - Embedding methods:
+        * Raw features (feat_raw)
+        * Aggregated features (feat_agg)
+        * Various SBERT models (all-mpnet-base-v2, clip-ViT, etc.)
+        * OpenAI embeddings
+        * Random embeddings for baseline
+    - Normalization techniques:
+        * L2 normalization
+    - Dimensionality reduction:
+        * PCA
+        * UMAP
+        * Beta-VAE
+        * Dictionary Learning
+    - Clustering methods:
+        * K-means
+        * Spectral Clustering (with cosine affinity)
+        * Bisecting K-means
+
+    3. Evaluates clustering quality using multiple metrics:
+    - Davies-Bouldin score
+    - Calinski-Harabasz score
+    - Silhouette score
+
+    4. Saves results and visualizations:
+    - Clustering predictions
+    - Embedding visualizations
+    - Quality metrics
+    - Comparison plots
+
+    Results can be visualized using tensorboard:
+        tensorboard --logdir=./tensorboard_runs
+
+    The tensorboard interface provides:
+    - Interactive embedding visualizations
+    - Clustering quality metrics over time
+    - Pairwise comparison plots between different methods
+    - Dataset statistics and metadata
+    """
+    if h or help:
+        print(do_grid_search.__doc__)
+        return
     start = time.time()
 
     if kwargs:

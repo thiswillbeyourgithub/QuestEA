@@ -322,7 +322,6 @@ Key findings from our **initial** experiments:
 
 # Roadmap / TODOs
 <!-- BEGIN_TODO -->
-- add bumpver versionning
 - add pacmap as a dim reduction
     - https://github.com/YingfanWang/PaCMAP
 - use a metric that takes monotony into account

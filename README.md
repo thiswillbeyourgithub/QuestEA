@@ -53,6 +53,7 @@ The process of turning patients into embeddings involves several technical steps
      * PCA (Principal Component Analysis)
      * NMF (Non-negative Matrix Factorization)
      * UMAP (Uniform Manifold Approximation and Projection)
+     * [PaCMAP](https://github.com/YingfanWang/PaCMAP)
      * Dictionary Learning
      * BVAE (Beta Variational Autoencoder)
    * Number of output dimensions is configurable

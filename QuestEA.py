@@ -35,6 +35,7 @@ import pandas as pd
 from tqdm import tqdm
 
 import umap
+import pacmap
 from sklearn.decomposition import PCA, NMF, DictionaryLearning
 from sklearn.preprocessing import Normalizer
 from sklearn.cluster import KMeans, SpectralClustering, BisectingKMeans
@@ -150,7 +151,7 @@ class QuestEA:
         n_cluster : str, optional
             If '2-8' then will look for cluster for k in range(2, 9). Default is '2-8'.
         dimred_method : str, optional
-            Can be pca, umap, nmf, dictionnarylearning, bvae. Default is 'pca'.
+            Can be pca, umap,, pacmap nmf, dictionnarylearning, bvae. Default is 'pca'.
         skip_embeddings_cache : bool, optional
             If True, will recompute all embeddings instead of computing them. This
             can imply cost if you are not self hosting an embedding model. Default is False.
@@ -176,7 +177,7 @@ class QuestEA:
                 "feat_agg_no_norm",
                 ] or mode.startswith("llm_"), "you have to specify a mode"
         assert isinstance(skip_embeddings_cache, bool), "skip_embeddings_cache has to be a boolean"
-        assert dimred_method in ["pca", "umap", "nmf", "dictionnarylearning", "bvae"], "invalid dimred method"
+        assert dimred_method in ["pca", "umap", "pacmap", "nmf", "dictionnarylearning", "bvae"], "invalid dimred method"
 
         # store as attribute
         self.datasetname = datasetname
@@ -463,6 +464,25 @@ class QuestEA:
                         }
                 self.df_EmbedInventories = pd.DataFrame(
                         data=umap.UMAP(**umap_kwargs).fit_transform(self.df_EmbedInventories.values),
+                        index=index,
+                        dtype=np.float32,
+                        )
+            elif self.dimred_method == "pacmap":
+                whi("Applying PacMAP")
+                n_n = int(len(self.df_EmbedInventories) * (100-15) / (1000 - 100))
+                n_n = min(max(n_n, 15), 100)
+                red(f"Will use n_neighbors={n_n}")
+                pacmap_model = pacmap.PaCMAP(
+                    n_components=self.n_components,
+                    n_neighbors=n_n,
+                    MN_ratio=1,  # default 0.5
+                    FP_ratio=4,  # default 2
+                    verbose=self.verbose,
+                    apply_pca=True,  # wether to start by a pca or not, not the same as 'init'
+                )
+
+                self.df_EmbedInventories = pd.DataFrame(
+                        data = pacmap_model.fit_transform(self.df_EmbedInventories.values, init="pca").squeeze(),
                         index=index,
                         dtype=np.float32,
                         )

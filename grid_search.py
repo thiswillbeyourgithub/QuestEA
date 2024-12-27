@@ -67,6 +67,7 @@ def do_grid_search(
     - Dimensionality reduction:
         * PCA
         * UMAP
+        * pacmap
         * Beta-VAE
         * Dictionary Learning
     - Clustering methods:
@@ -132,6 +133,7 @@ def do_grid_search(
             "dimred_method": [
                 "pca",
                 "umap",
+                "pacmap",
                 # "bvae",
                 # "dictionnarylearning"
             ],  # pca/umap/nmf/bvae/dictionnarylearning

@@ -69,20 +69,18 @@ def _get_sentence_encoder(mode, cache, normalizer):
         # model_name = "text-embedding-ada-002"
         model_name = "text-embedding-3-small"
 
-        if cache is None:
-            cached_encoder = client.embeddings.create
-        else:
-            cached_encoder = cache.cache(client.embeddings.create)
-        def sentence_encoder(sentences):
-            vectors = openai_sentence_encoder(
-                    sentences,
-                    vectorizer=cached_encoder,
-                    model_name=model_name,
-                    ).squeeze()
+        def _sentence_encoder(sentences, model=model_name):
+            vectors = client.embeddings.create(
+                    input=sentences,
+                    model=model_name,
+                    )
+            vectors = np.array([x.embedding for x in vectors.data], dtype=np.float32).squeeze()
             if len(vectors.shape) == 1:
                 return normalizer.fit_transform(vectors.reshape(1, -1))
             else:
                 return normalizer.fit_transform(vectors)
+        if cache is not None:
+            sentence_encoder = cache.cache(_sentence_encoder)
 
     elif mode.startswith("llm_random"):
         # fake llm that returns normalized random vectors

@@ -2,7 +2,7 @@ import os
 import logging
 from logging import handlers
 from tqdm import tqdm
-import openai
+from openai import OpenAI
 from pathlib import Path
 import re
 from transformers import AutoModel
@@ -65,13 +65,13 @@ def _get_sentence_encoder(mode, cache, normalizer):
     assert mode.startswith("llm_"), f"unexpected mode: '{mode}'"
     if mode == "llm_openai":
         assert Path("API_KEY.txt").exists(), "No api key found"
-        openai.api_key = str(Path("API_KEY.txt").read_text()).strip()
+        client = OpenAI(api_key=str(Path("API_KEY.txt").read_text()).strip())
         model_name = "text-embedding-ada-002"
 
         if cache is None:
-            cached_encoder = openai.Embedding.create
+            cached_encoder = client.embeddings.create
         else:
-            cached_encoder = cache.cache(openai.Embedding.create)
+            cached_encoder = cache.cache(client.embeddings.create)
         def sentence_encoder(sentences):
             vectors = openai_sentence_encoder(
                     sentences,

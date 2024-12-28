@@ -66,7 +66,8 @@ def _get_sentence_encoder(mode, cache, normalizer):
     if mode == "llm_openai":
         assert Path("API_KEY.txt").exists(), "No api key found"
         client = OpenAI(api_key=str(Path("API_KEY.txt").read_text()).strip())
-        model_name = "text-embedding-ada-002"
+        # model_name = "text-embedding-ada-002"
+        model_name = "text-embedding-3-small"
 
         if cache is None:
             cached_encoder = client.embeddings.create

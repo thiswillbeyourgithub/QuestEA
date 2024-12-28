@@ -164,8 +164,8 @@ def do_grid_search(
 
                 "llm_openai",
                 ],
-            "n_components": [10],
-            "sample_to_keep": [1_000],
+            "n_components": [4],
+            "sample_to_keep": [2_000],
             "testing": [testing],
             "result_dir": [resultdir],
             "verbose": [verbose],

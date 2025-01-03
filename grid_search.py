@@ -25,6 +25,7 @@ def do_grid_search(
         testing=False,
         debug=False,
         verbose=False,
+        crash_on_error=True,
         h=None,
         help=None,
         **kwargs,
@@ -43,6 +44,7 @@ def do_grid_search(
         --testing: Run in testing mode with reduced dataset (default: False)
         --debug: Enable debug mode with pdb post-mortem (default: False)
         --verbose: Enable verbose output (default: False)
+        --crash_on_error: Stop execution on first error (default: True)
 
     The script:
     1. Iterates through multiple datasets:
@@ -265,7 +267,7 @@ def do_grid_search(
                 end = time.time() - start
                 print(f"Total time so far: {end:2f}s")
                 writer.flush()
-                if debug:
+                if debug or crash_on_error:
                     pdb.post_mortem()
                 else:
                     tqdm.write("Keep going despite error.")

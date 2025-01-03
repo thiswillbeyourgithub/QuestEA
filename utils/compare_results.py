@@ -38,6 +38,7 @@ def CompareResultsPairwise(
         behavior: Optional[str] = None,
         testing: bool = False,
         verbose: bool = False,
+        n_cpus: int = 1,
         ) -> Optional[List[Dict[str, Any]]]:
     """
     Step 3 of the QuestEA pipeline: Compare results pairwise.
@@ -74,7 +75,7 @@ def CompareResultsPairwise(
             iterator.append((i, j))
 
     results_para = Parallel(
-            n_jobs=-1 if not testing else 1,
+            n_jobs=n_cpus if not testing else 1,
             backend="loky" if not testing else "threading",
             )(delayed(
                 compareOnePair)(

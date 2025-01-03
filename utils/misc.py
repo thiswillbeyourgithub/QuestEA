@@ -84,6 +84,8 @@ def _get_sentence_encoder(mode, cache, normalizer):
         else:
             sentence_encoder = _sentence_encoder
 
+        sentence_encoder.__questea_encoder__ = client.embeddings.create
+
     elif mode.startswith("llm_random"):
         # fake llm that returns normalized random vectors
         # syntax example mode = "llm_random_500" to create vector of 500 dimensions
@@ -100,6 +102,7 @@ def _get_sentence_encoder(mode, cache, normalizer):
                 return normalizer.fit_transform(vectors.reshape(1, -1))
             else:
                 return normalizer.fit_transform(vectors)
+        sentence_encoder.__questea_encoder__ = np.random.seed
 
     elif "jina-embeddings" in mode:
         model_name = mode[4:]
@@ -126,6 +129,7 @@ def _get_sentence_encoder(mode, cache, normalizer):
                 return normalizer.fit_transform(vectors.reshape(1, -1))
             else:
                 return normalizer.fit_transform(vectors)
+        sentence_encoder.__questea_encoder__ = cached_encoder
 
     else:
         os.environ["TOKENIZERS_PARALLELISM"] = "true"
@@ -152,6 +156,13 @@ def _get_sentence_encoder(mode, cache, normalizer):
                 return normalizer.fit_transform(vectors.reshape(1, -1))
             else:
                 return normalizer.fit_transform(vectors)
+        sentence_encoder.__questea_encoder__ = sbert_sentence_encoder
+
+    # store metadata for debugging
+    if isinstance(sentence_encoder.__doc__, str): 
+        sentence_encoder.__doc__ += f"\n\nMode: {mode}"
+    else:
+        sentence_encoder.__doc__ = f"Mode: {mode}"
 
     return sentence_encoder
 

@@ -273,7 +273,10 @@ class QuestEA:
 
         # create a dummy vector to be sure of the shape of the embedding
         if self.verbose:
-            whi("creating dummy vector")
+            whi("creating dummy vector with model")
+            print(sentence_encoder)
+            print(sentence_encoder.__doc__)
+            print(sentence_encoder.__questea_encoder__)
         test_vec = sentence_encoder(
                 sentences=["I love cats"],
                 )

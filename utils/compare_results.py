@@ -23,6 +23,7 @@ import random
 from pathlib import Path
 from tqdm import tqdm
 import fire
+import os
 
 import numpy as np
 from scipy.optimize import linear_sum_assignment
@@ -73,9 +74,13 @@ def CompareResultsPairwise(
             assert i != j, "invalid iteration"
             iterator.append((i, j))
 
+    # Get parallel config from env vars with defaults
+    n_jobs = int(os.getenv("QUESTEA_N_JOBS", -1 if not testing else 1))
+    backend = os.getenv("QUESTEA_PARALLEL_BACKEND", "loky" if not testing else "threading")
+    
     results_para = Parallel(
-            n_jobs=-1 if not testing else 1,
-            backend="loky" if not testing else "threading",
+            n_jobs=n_jobs,
+            backend=backend,
             )(delayed(
                 compareOnePair)(
                     pathA=paths[i],

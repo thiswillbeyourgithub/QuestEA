@@ -162,7 +162,7 @@ def do_grid_search(
                 "llm_average_word_embeddings_glove.6B.300d",
                 "llm_facebook-dpr-ctx_encoder-multiset-base",
                 "llm_facebook-dpr-question_encoder-multiset-base",
-                "llm_jina-embeddings-v2-base-en",
+                # "llm_jina-embeddings-v2-base-en",  # seems to be buggy
 
                 "llm_openai",
                 ],

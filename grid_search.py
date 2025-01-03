@@ -281,40 +281,40 @@ def do_grid_search(
                     verbose=param["verbose"],
                     )
 
-            # for comp in compared:
-            #     tag = comp["path_to_res_A"] + " vs " + comp["path_to_res_B"]
-            #     tag = tag.replace("RES_", "")
-            #     for it in comp["f1"].keys():
-            #         writer.add_hparams(
-            #                 {
-            #                     "modeA": comp["modeA"],
-            #                     "normA": comp["normA"],
-            #                     "cluster_methodA": comp["cluster_methodA"],
-            #                     "dimred_methodA": comp["dimred_methodA"],
-            #                     "n_componentsA": comp["n_componentsA"],
+            for comp in compared:
+                tag = comp["path_to_res_A"] + " vs " + comp["path_to_res_B"]
+                tag = tag.replace("RES_", "")
+                for it in comp["f1"].keys():
+                    writer.add_hparams(
+                            {
+                                "modeA": comp["modeA"],
+                                "normA": comp["normA"],
+                                "cluster_methodA": comp["cluster_methodA"],
+                                "dimred_methodA": comp["dimred_methodA"],
+                                "n_componentsA": comp["n_componentsA"],
 
-            #                     "modeB": comp["modeB"],
-            #                     "normB": comp["normB"],
-            #                     "cluster_methodB": comp["cluster_methodB"],
-            #                     "dimred_methodB": comp["dimred_methodB"],
-            #                     "n_componentsB": comp["n_componentsB"],
+                                "modeB": comp["modeB"],
+                                "normB": comp["normB"],
+                                "cluster_methodB": comp["cluster_methodB"],
+                                "dimred_methodB": comp["dimred_methodB"],
+                                "n_componentsB": comp["n_componentsB"],
 
-            #                     "K": it,
-            #                     },
-            #                 {
-            #                     "f1": comp["f1"][it],
-            #                     "f1_vs_randint": comp["f1_vs_randint"][it],
-            #                     "perf_f1_raw": comp["perf_f1_raw"][it],
-            #                     "perf_f1_raw_2": comp["f1"][it] - comp["f1_vs_randint"][it],
+                                "K": it,
+                                },
+                            {
+                                "f1": comp["f1"][it],
+                                "f1_vs_randint": comp["f1_vs_randint"][it],
+                                "perf_f1_raw": comp["perf_f1_raw"][it],
+                                "perf_f1_raw_2": comp["f1"][it] - comp["f1_vs_randint"][it],
 
-            #                     "randindex": comp["randindex"][it],
-            #                     "randindex_vs_randint": comp["randindex_vs_randint"][it],
-            #                     "perf_randindex_raw": comp["perf_randindex_raw"][it],
-            #                     "perf_randindex_raw_2": comp["randindex"][it] - comp["randindex_vs_randint"][it],
-            #                     },
-            #                 )
-            #     writer.add_scalar("perf_f1_mean" + tag, comp["perf_f1_mean"])
-            #     writer.add_scalar("perf_randindex_mean" + tag, comp["perf_randindex_mean"])
+                                "randindex": comp["randindex"][it],
+                                "randindex_vs_randint": comp["randindex_vs_randint"][it],
+                                "perf_randindex_raw": comp["perf_randindex_raw"][it],
+                                "perf_randindex_raw_2": comp["randindex"][it] - comp["randindex_vs_randint"][it],
+                                },
+                            )
+                writer.add_scalar("perf_f1_mean" + tag, comp["perf_f1_mean"])
+                writer.add_scalar("perf_randindex_mean" + tag, comp["perf_randindex_mean"])
 
             for n_cluster in output["n_cluster"]:
                 figs = Plotter(

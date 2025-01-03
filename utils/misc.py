@@ -81,6 +81,8 @@ def _get_sentence_encoder(mode, cache, normalizer):
                 return normalizer.fit_transform(vectors)
         if cache is not None:
             sentence_encoder = cache.cache(_sentence_encoder)
+        else:
+            sentence_encoder = _sentence_encoder
 
     elif mode.startswith("llm_random"):
         # fake llm that returns normalized random vectors

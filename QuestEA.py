@@ -90,7 +90,7 @@ class QuestEA:
             testing=False,
             skip_plot=False,
             show_plot=False,
-            n_cpus=-1,
+            n_cpus=1,
             cluster_method="kmeans",
             n_cluster="2-8",
             dimred_method="pca",
@@ -144,7 +144,7 @@ class QuestEA:
             If True, will automatically open the plot instead of just saving it. Default is False.
         n_cpus : int, optional
             Used when using batch processing to compute patient embedding
-            based on the answer to the inventory. Default is -1.
+            based on the answer to the inventory. Default is 1.
         cluster_method : str, optional
             Kmeans, bisectingkmeans or spectralcosine.
             Lowercase is applied. Default is 'kmeans'.

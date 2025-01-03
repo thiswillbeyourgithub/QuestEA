@@ -125,6 +125,17 @@ This process creates a rich representation that captures both:
         * -1 indicates incorrect clustering
 * All these metrics work best with convex clusters and may not capture quality as well for density-based or irregularly shaped clusters
 
+### Troubleshooting
+* If you encounter "terminated" errors, out-of-memory (OOM) issues, or abrupt crashes:
+    * Try reducing the number of parallel jobs by setting `QUESTEA_N_JOBS` to a lower number
+    * Try switching the parallel backend by setting `QUESTEA_PARALLEL_BACKEND="threading"`
+    * Example:
+      ```bash
+      export QUESTEA_N_JOBS=4
+      export QUESTEA_PARALLEL_BACKEND="threading"
+      python grid_search.py
+      ```
+
 ### How can I help?
 * There are several ways you can contribute to this research project:
     * Try out the code and report any issues you encounter
@@ -151,6 +162,19 @@ This process creates a rich representation that captures both:
 2. Download each dataset mentioned in the "List of datasets" section below by following their respective URLs
 3. Place the downloaded datasets in the `dataset` folder
 4. Install the needed libraries via `python -m pip install -r requirements.txt` (*Note: it seems that `uv` sometimes fail to install umap whereas `pip` works*)
+
+### Environment Variables
+The following environment variables can be used to configure parallel processing:
+
+- `QUESTEA_N_JOBS`: Number of parallel jobs to use (default: -1 for all available cores)
+- `QUESTEA_PARALLEL_BACKEND`: Parallel backend to use (default: "loky" for process-based parallelism, can use "threading" for thread-based)
+
+Example usage:
+```bash
+export QUESTEA_N_JOBS=4
+export QUESTEA_PARALLEL_BACKEND="threading"
+python grid_search.py
+```
 
 ### Running the grid search
 The `grid_search.py` script performs a comprehensive analysis across multiple parameters:

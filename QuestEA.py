@@ -77,7 +77,7 @@ def cached_dataloader(datasetname, mode, mode_type, norm_f):
     return dl.df_answ, dl.df_text
 
 class QuestEA:
-    VERSION: str = "1.0.0"
+    VERSION: str = "1.0.1"
     def __init__(
             self,
             mode=None,

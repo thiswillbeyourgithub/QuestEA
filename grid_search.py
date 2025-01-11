@@ -5,6 +5,7 @@ from pathlib import Path
 from sklearn.model_selection import GridSearchCV, ParameterGrid
 from tqdm import tqdm
 from shutil import rmtree
+from TaguchiGridSearchConverter import TaguchiGridSearchConverter
 
 from QuestEA import QuestEA
 
@@ -26,6 +27,7 @@ def do_grid_search(
         debug=False,
         verbose=False,
         crash_on_error=True,
+        use_taguchi_arrays=True,
         h=None,
         help=None,
         **kwargs,
@@ -42,6 +44,9 @@ def do_grid_search(
         --logdir: Directory for tensorboard logs (default: ./tensorboard_runs)
         --resultdir: Directory for results (default: ./results_ignore_backups/)
         --testing: Run in testing mode with reduced dataset (default: False)
+        --use_taguchi_arrays: Use taguchi arrays to reduce the number of
+        experiments to do. This assumes that the interaction of effects are
+        negligible. (default: True)
         --debug: Enable debug mode with pdb post-mortem (default: False)
         --verbose: Enable verbose output (default: False)
         --crash_on_error: Stop execution on first error (default: True)
@@ -173,6 +178,12 @@ def do_grid_search(
             "verbose": [verbose],
             })
 
+    if use_taguchi_arrays:
+        converter = TaguchiGridSearchConverter()
+        reduced_grid = converter.convert(param_grid)
+        assert len(reduced_grid) <= len(param_grid)
+        assert all(rg in param_grid for rg in reduced_grid)
+        param_grid = reduced_grid
 
     # for each dataset, iterate over the whole parameter grid
     n = len(param_grid) * len(dataset_list)

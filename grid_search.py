@@ -180,7 +180,7 @@ def do_grid_search(
 
     if use_taguchi_arrays:
         converter = TaguchiGridSearchConverter()
-        reduced_grid = converter.convert(param_grid)
+        reduced_grid = converter.fit_transform(param_grid)
         assert len(reduced_grid) <= len(param_grid)
         assert all(rg in param_grid for rg in reduced_grid)
         param_grid = reduced_grid

@@ -145,6 +145,12 @@ This process creates a rich representation that captures both:
     * Are there hidden patterns in historical survey data that could inform current diagnostic practices?
     * Can we better understand the relationship between different psychiatric conditions through their embedding patterns?
 
+# Optimization with Taguchi Grid Search
+
+To optimize the number of experiments while maintaining comprehensive coverage of parameter combinations, this project uses Taguchi Grid Search. This method, developed by Dr. Taguchi, is a statistical approach that reduces the number of experiments needed by assuming that parameter interactions are negligible. 
+
+The TaguchiGridSearchConverter library (developed by Olivier Cornelis) transforms a full parameter grid into an optimized set of experiments using Taguchi's orthogonal array principles. This allows us to test all parameter combinations with significantly fewer runs while still capturing the main effects of each parameter.
+
 # How to use
 ### Prerequisites
 1. Create a `dataset` folder in the project root

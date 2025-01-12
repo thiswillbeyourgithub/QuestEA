@@ -130,7 +130,7 @@ def do_grid_search(
             "DASS",  # 6k
             "HEXACO",  # 12k
             "16PF",  # 20k
-            "IPIP"  # 25k+
+            # "IPIP"  # 25k+  # NOT INCLUDED IN THE DEFAULT FOLDER
         ]
     param_grid = ParameterGrid({
             # "norm": ["l1", "l2"],

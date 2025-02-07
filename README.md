@@ -176,7 +176,16 @@ python grid_search.py --debug
 
 # Enable verbose output
 python grid_search.py --verbose
+
+# Use multiple CPUs for parallel processing (default: 1)
+python grid_search.py --n_cpus=4
 ```
+
+**Note on parallel processing:**  
+The `n_cpus` argument allows you to use multiple CPUs for parallel processing, which can greatly speed up the run. However, debugging becomes more difficult when using multiple CPUs, so we recommend:
+1. First run with the default `n_cpus=1` to verify everything works correctly
+2. Once you're confident it works on smaller datasets, gradually increase `n_cpus` to optimize performance
+3. Be aware that higher CPU usage may lead to increased memory consumption
 
 The script will:
 1. Process each dataset through multiple embedding methods

@@ -145,12 +145,6 @@ This process creates a rich representation that captures both:
     * Are there hidden patterns in historical survey data that could inform current diagnostic practices?
     * Can we better understand the relationship between different psychiatric conditions through their embedding patterns?
 
-### What are taguchi arrays?
-
-To optimize the number of experiments while maintaining comprehensive coverage of parameter combinations, the grid_search script uses Taguchi Grid Search. This method, developed by Dr. Taguchi, is a statistical approach that reduces the number of experiments needed **by assuming that parameter interactions are negligible**.
-
-The TaguchiGridSearchConverter library (developed by Olivier Cornelis) transforms a full parameter grid into an optimized set of experiments using Taguchi's orthogonal array principles. This allows us to test all parameter combinations with significantly fewer runs while still capturing the main effects of each parameter.
-
 # How to use
 ### Prerequisites
 1. Create a `dataset` folder in the project root
@@ -159,7 +153,7 @@ The TaguchiGridSearchConverter library (developed by Olivier Cornelis) transform
 4. Install the needed libraries via `python -m pip install -r requirements.txt` (*Note: it seems that `uv` sometimes fail to install umap whereas `pip` works*)
 
 ### Running the grid search
-The `grid_search.py` script performs a comprehensive analysis (but not exhaustive thanks to my other library [TaguchiGridSearchConverter](https://github.com/thiswillbeyourgithub/TaguchiGridSearchConverter) (see [here](#what-are-taguchi-arrays)) across multiple parameters:
+The `grid_search.py` script performs a comprehensive analysis (but not exhaustive thanks to my other library [GridSearchReductor](https://github.com/thiswillbeyourgithub/GridSearchReductor)) across multiple parameters:
 
 ```bash
 # Basic usage

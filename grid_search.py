@@ -5,7 +5,7 @@ from pathlib import Path
 from sklearn.model_selection import GridSearchCV, ParameterGrid
 from tqdm import tqdm
 from shutil import rmtree
-from TaguchiGridSearchConverter import TaguchiGridSearchConverter
+from GridSearchReductor import GridSearchReductor
 
 from QuestEA import QuestEA
 
@@ -179,8 +179,8 @@ def do_grid_search(
             })
 
     if use_taguchi_arrays:
-        converter = TaguchiGridSearchConverter()
-        reduced_grid = converter.fit_transform(param_grid)
+        grid_converter = GridSearchReductor()
+        reduced_grid = grid_converter.fit_transform(param_grid)
         assert len(reduced_grid) <= len(param_grid)
         assert all(rg in param_grid for rg in reduced_grid)
         param_grid = reduced_grid

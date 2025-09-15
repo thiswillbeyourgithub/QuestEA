@@ -28,7 +28,7 @@ def do_grid_search(
     debug=False,
     verbose=False,
     crash_on_error=True,
-    use_latin_hypercube_sampling=True,
+    use_stratified_sampling=True,
     h=None,
     help=None,
     **kwargs,
@@ -45,7 +45,7 @@ def do_grid_search(
         --logdir: Directory for tensorboard logs (default: ./tensorboard_runs)
         --resultdir: Directory for results (default: ./results_ignore_backups/)
         --testing: Run in testing mode with reduced dataset (default: False)
-        --use_latin_hypercube_sampling: Use latin hypercube sampling to reduce the number of
+        --use_stratified_sampling: Use stratified sampling to reduce the number of
         experiments to do. This assumes that the interaction of effects are
         negligible. (default: True)
         --debug: Enable debug mode with pdb post-mortem (default: False)
@@ -179,7 +179,7 @@ def do_grid_search(
         }
     )
 
-    if use_latin_hypercube_sampling:
+    if use_stratified_sampling:
         grid_converter = GridSearchReductor()
         reduced_grid = grid_converter.fit_transform(param_grid)
         assert len(reduced_grid) <= len(param_grid)

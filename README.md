@@ -2,7 +2,11 @@
 
 *(Pronounced "Quest-Tea")*
 
-QuestEA is an exploratory research project investigating a novel approach to analyzing patient survey data by combining numerical responses with the semantic meaning of questions through embeddings. While still in early experimental stages, this academic work explores whether incorporating question semantics could potentially enhance our understanding of patient data and survey design. This is a proof-of-concept study and should not be used for clinical decisions.
+QuestEA is an exploratory research project investigating a novel approach to analyzing patient survey data by combining numerical responses with the semantic meaning of questions through embeddings.
+
+It could allow comparing psychiatry studies that don't use the same rating scale (currently a big problem, see [Heterogeneity of outcome measures in depression trials and the relevance of the content of outcome measures to patients](https://doi.org/10.1016/S2215-0366(23)00438-8) by Chevance et al.). Furthermore, using [ML latent spaces](https://en.wikipedia.org/wiki/Latent_space) means we could compare heterogeneous datasets (surveys + natural language report + videos + biological + MRI reports + ...).
+
+While still in early experimental stages, this academic work explores whether incorporating question semantics could potentially enhance our understanding of patient data and survey design. This is a proof-of-concept study and should not be used for clinical decisions.
 
 ## Innovative approach to extracting information from patient survey
 

@@ -10,8 +10,6 @@ Furthermore, using [ML latent spaces](https://en.wikipedia.org/wiki/Latent_space
 
 While still in early experimental stages, this academic work explores whether incorporating question semantics could potentially enhance our understanding of patient data and survey design. This is a proof-of-concept study and should not be used for clinical decisions.
 
-## Innovative approach to extracting information from patient survey
-
 ## FAQ
 ### What is this?
 * QuestEA (QuestionnaireEmbeddingsAnalysis) is a way to turn structured data into embeddings, initially conceived for patient surveys but applicable to many other types of data.

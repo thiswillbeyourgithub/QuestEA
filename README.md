@@ -21,7 +21,7 @@ While still in early experimental stages, this academic work explores whether in
 * This approach is fundamentally richer than traditional methods that simply abstract questions into a list of integers (checked or not checked).
 
 ### Status?
-* As I'm currently an independant researcher, I don't have access to a lot of data so I reach out to an official lab and am waiting to be granted access to official data. In the meantime this is just an experimental repository.
+* As I'm currently an independant researcher, I don't have access to a lot of data so I reach out to an official lab and am waiting to be granted access to official data. In the meantime this is just an experimental repository. **Update: the dataset became suddenly so expensive that the lab couldn't afford it.**
 
 ### Who's behind this project?
 * This is a solo project developed during medical school

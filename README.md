@@ -200,7 +200,7 @@ tensorboard --logdir=./tensorboard_runs
 ```
 
 # Notes
-* Many docstrings in this project were initially generated using [aider](https://aider.chat/) and were quickly reviewed for validity. The clarity of the code is also somewhat below my standards but should be okay.
+* Many docstrings in this project were initially generated using [aider](https://aider.chat/) and were quickly reviewed for validity. The clarity of the code is also somewhat below my standards for time constraints at the time but should be okay.
 
 # List of datasets used
 

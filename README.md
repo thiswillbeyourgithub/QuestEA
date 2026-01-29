@@ -20,14 +20,6 @@ While still in early experimental stages, this academic work explores whether in
     * Raw data about the metric itself (here: the meaning of each question)
 * This approach is fundamentally *richer* than traditional methods that simply abstract questions into a list of integers (checked or not checked).
 
-### Project status?
-* As I'm currently a solo researcher (edit: I am now also a psychiatry resident), I don't have access to a lot of data so I reach out to an official lab and am waiting to be granted access to official data. In the meantime this is just an experimental repository. **Update: the dataset became suddenly so expensive that the lab couldn't afford it.**
-
-### Who's behind this project?
-* This is a solo project developed during medical school
-* It started as a way to explore novel approaches to analyzing patient data while learning about machine learning and natural language processing
-* The project benefits from feedback and discussions with other researchers, but all development is done independently by me, Olivier Cornelis. I do want to thank Marc B. and Ivan B. as well as Fabien V.
-
 ### How does it work?
 The process of turning patients into embeddings involves several technical steps:
 
@@ -112,6 +104,14 @@ This process creates a rich representation that captures both:
     * This vast amount of historical data could provide crucial insights into the ongoing upheaval in psychiatric classification
     * Potential to discover patterns that were impossible to detect with traditional analysis methods
 
+### Project status?
+* As I'm currently a solo researcher (edit: I am now also a psychiatry resident), I don't have access to a lot of data so I reach out to an official lab and am waiting to be granted access to official data. In the meantime this is just an experimental repository. **Update: the dataset became suddenly so expensive that the lab couldn't afford it.**
+
+### Who's behind this project?
+* This is a solo project developed during medical school
+* It started as a way to explore novel approaches to analyzing patient data while learning about machine learning and natural language processing
+* The project benefits from feedback and discussions with other researchers, but all development is done independently by me, Olivier Cornelis. I do want to thank Marc B. and Ivan B. as well as Fabien V.
+
 ### What are the main challenges in this approach?
 * This is a completely new way to analyze questionnaire data that has never been done before. There is no established ground truth for patient data in this context since we're measuring it in a novel way.
 * The high-dimensional nature of the data makes it particularly challenging to analyze intuitively. Human intuition breaks down when dealing with multidimensional spaces.
@@ -122,7 +122,7 @@ This process creates a rich representation that captures both:
 * Since this is a completely new approach to analyzing questionnaire data, there is no ground truth to validate against. Therefore, we rely on intrinsic metrics (like Calinski-Harabasz, Davies-Bouldin, and Silhouette scores) to evaluate the quality of the clustering results.
 * These metrics help us assess how well-defined and separated the clusters are, without needing external validation data.
 
-### What are the metrics used?
+#### What are the metrics used?
 * We use several complementary clustering quality metrics:
     * Calinski-Harabasz Index (higher is better):
         * Measures ratio of between-cluster to within-cluster variance

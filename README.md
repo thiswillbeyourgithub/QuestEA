@@ -20,7 +20,7 @@ While still in early experimental stages, this academic work explores whether in
     * Raw data about the metric itself (here: the meaning of each question)
 * This approach is fundamentally *richer* than traditional methods that simply abstract questions into a list of integers (checked or not checked).
 
-### Status?
+### Project status?
 * As I'm currently a solo researcher (edit: I am now also a psychiatry resident), I don't have access to a lot of data so I reach out to an official lab and am waiting to be granted access to official data. In the meantime this is just an experimental repository. **Update: the dataset became suddenly so expensive that the lab couldn't afford it.**
 
 ### Who's behind this project?
@@ -37,6 +37,7 @@ The process of turning patients into embeddings involves several technical steps
    * Survey questions are loaded as text
 
 2. Embedding Generation:
+   * The basic idea is to take the answer to each Likert question and use it as a multiplying factor to the question's embedding. In practice lots of tweaks can be used. Data is needed ultimately to figure out what works best.
    * For raw feature mode:
      * `feat_raw`: Uses individual answers to each question
        * Preserves the most granular information

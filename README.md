@@ -84,7 +84,13 @@ This process creates a rich representation that captures both:
     * Can potentially generate new relevant questions by:
         * Finding patients who answer similarly on existing questions but differ in their symptom embeddings
         * Using [embedding-to-text techniques](https://simonwillison.net/2023/Oct/10/bottleneck/) to generate questions that maximize separation between such patients
+        * Since embeddings can be reversible under certain conditions, the directions that maximally separate patient clusters could potentially be used to discover clinically relevant questions that traditional methods might miss
         * While not always mathematically possible, this approach offers a novel way to discover overlooked diagnostic questions
+    * Enables creation of an iterative question bank:
+        * Only the maximally informative questions would be asked to patients
+        * Maintains clinical relevance while staying within practical time constraints
+        * Preserves inter-study comparability without requiring all patients to answer all questions
+        * Could dynamically adapt question selection based on previous answers to maximize information gain
 
 * Better Patient Comparison:
     * Enables comparison of patients across studies with different survey combinations

@@ -4,7 +4,9 @@
 
 QuestEA is an exploratory research project investigating a novel approach to analyzing patient survey data by combining numerical responses with the semantic meaning of questions through [embeddings](https://en.wikipedia.org/wiki/Embedding_(machine_learning)).
 
-It could allow comparing psychiatry studies that don't use the same rating scale (currently a big problem, see *[Heterogeneity of outcome measures in depression trials and the relevance of the content of outcome measures to patients](https://doi.org/10.1016/S2215-0366(23)00438-8) by Chevance et al.*).
+In short: **QuestEA turns one patient into one vector for analysis**.
+
+QuestEA could allow comparing psychiatry studies that don't use the same rating scale (currently a big problem, see *[Heterogeneity of outcome measures in depression trials and the relevance of the content of outcome measures to patients](https://doi.org/10.1016/S2215-0366(23)00438-8) by Chevance et al.*).
 
 Furthermore, using [ML latent spaces](https://en.wikipedia.org/wiki/Latent_space) means we could compare heterogeneous datasets (surveys + natural language report + videos + biological + MRI reports + ...).
 

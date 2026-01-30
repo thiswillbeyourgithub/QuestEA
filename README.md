@@ -49,6 +49,25 @@ The process of turning patients into embeddings involves several technical steps
      * The result is normalized again (L1/L2)
      * Each patient ends up with a vector of the same dimension as the question embeddings
 
+**Mathematical Formula (LLM Mode):**
+
+For those interested in the technical details, here's how we create a patient vector:
+
+Given a survey with $N$ questions:
+- Let $\vec{q}_i \in \mathbb{R}^D$ be the embedding vector for question $i$ (dimension $D$ typically ranges from 384 to 1536 depending on the model)
+- Let $a_i \in \mathbb{R}$ be the patient's numerical answer to question $i$ (e.g., 0-4 on a Likert scale)
+
+The patient's embedding vector is computed as:
+
+$$\vec{p} = \text{Normalize}\left(\sum_{i=1}^{N} a_i \cdot \vec{q}_i\right)$$
+
+Where:
+- $a_i \cdot \vec{q}_i$ scales the question embedding by the patient's answer (element-wise scalar multiplication)
+- $\sum_{i=1}^{N}$ sums all scaled question embeddings into a single vector
+- $\text{Normalize}(\cdot)$ applies either L1 or L2 normalization to the result
+
+**Example:** If a patient strongly agrees (rating=5) with "I feel sad", the embedding for that question gets fully weighted (5×), while a neutral answer (rating=2) would weight it less (2×). The final patient vector is the normalized sum of all these weighted question embeddings, capturing both what questions were asked AND how the patient answered them.
+
 3. Dimension Reduction (Optional):
    * Can reduce dimensions using:
      * PCA (Principal Component Analysis)

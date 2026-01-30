@@ -49,6 +49,8 @@ The process of turning patients into embeddings involves several technical steps
      * The result is normalized again (L1/L2)
      * Each patient ends up with a vector of the same dimension as the question embeddings
 
+**Note on Implementation:** The mathematical formula below represents the current implementation of QuestEA. However, it's important to understand that QuestEA is fundamentally about the *concept* of combining patient responses with question semantics through embeddings. The specific formula may very well need refinement and tweaks as we gather more data and real-world validation. What remains constant is the general idea: creating richer patient representations by considering both what questions were asked and how they were answered. Ultimately, access to real clinical data will be necessary to determine which variations of this approach are most valuable.
+
 **Mathematical Formula (LLM Mode):**
 
 For those interested in the technical details, here's how we create a patient vector:

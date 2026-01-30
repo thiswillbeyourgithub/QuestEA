@@ -174,11 +174,7 @@ This process creates a rich representation that captures both:
 * Due to these challenges, we have to rely on a combination of coarse intrinsic metrics to evaluate our results.
 * Ultimately, this technique needs validation with real clinical data to determine which aspects are most valuable to pursue further.
 
-### Why did you use those specific metrics?
-* Since this is a completely new approach to analyzing questionnaire data, there is no ground truth to validate against. Therefore, we rely on intrinsic metrics (like Calinski-Harabasz, Davies-Bouldin, and Silhouette scores) to evaluate the quality of the clustering results.
-* These metrics help us assess how well-defined and separated the clusters are, without needing external validation data.
-
-#### What are the metrics used?
+### What are the metrics used?
 * We use several complementary clustering quality metrics:
     * Calinski-Harabasz Index (higher is better):
         * Measures ratio of between-cluster to within-cluster variance
@@ -195,6 +191,10 @@ This process creates a rich representation that captures both:
         * 0 indicates overlapping clusters
         * -1 indicates incorrect clustering
 * All these metrics work best with convex clusters and may not capture quality as well for density-based or irregularly shaped clusters
+
+### Why did you use those specific metrics?
+* Since this is a completely new approach to analyzing questionnaire data, there is no ground truth to validate against. Therefore, we rely on intrinsic metrics (like Calinski-Harabasz, Davies-Bouldin, and Silhouette scores) to evaluate the quality of the clustering results.
+* These metrics help us assess how well-defined and separated the clusters are, without needing external validation data.
 
 ### How can I help?
 * There are several ways you can contribute to this research project:

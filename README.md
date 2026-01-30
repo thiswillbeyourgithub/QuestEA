@@ -55,18 +55,19 @@ For those interested in the technical details, here's how we create a patient ve
 
 Given a survey with $N$ questions:
 - Let $\vec{q}_i \in \mathbb{R}^D$ be the embedding vector for question $i$ (dimension $D$ typically ranges from 384 to 1536 depending on the model)
-- Let $a_i \in \mathbb{R}$ be the patient's numerical answer to question $i$ (e.g., 0-4 on a Likert scale)
+- Let $a_i \in \mathbb{R}^+$ be the patient's numerical answer to question $i$ (e.g., 1-5 on a Likert scale, must be > 0)
 
 The patient's embedding vector is computed as:
 
-$$\vec{p} = \text{Normalize}\left(\sum_{i=1}^{N} a_i \cdot \vec{q}_i\right)$$
+$$\vec{p} = \text{Normalize}\left(\max_{i=1}^{N} (a_i \cdot \vec{q}_i) + |\min(\vec{s})|\right)$$
 
 Where:
 - $a_i \cdot \vec{q}_i$ scales the question embedding by the patient's answer (element-wise scalar multiplication)
-- $\sum_{i=1}^{N}$ sums all scaled question embeddings into a single vector
-- $\text{Normalize}(\cdot)$ applies either L1 or L2 normalization to the result
+- $\max_{i=1}^{N}$ takes the maximum across all scaled question embeddings
+- $|\min(\vec{s})|$ shifts the result to ensure all values are non-negative before normalization
+- $\text{Normalize}(\cdot)$ applies either L1 or L2 normalization to the final result
 
-**Example:** If a patient strongly agrees (rating=5) with "I feel sad", the embedding for that question gets fully weighted (5×), while a neutral answer (rating=2) would weight it less (2×). The final patient vector is the normalized sum of all these weighted question embeddings, capturing both what questions were asked AND how the patient answered them.
+**Example:** If a patient strongly agrees (rating=5) with "I feel sad", the embedding for that question gets fully weighted (5×), while a neutral answer (rating=2) would weight it less (2×). Note that answers must be positive integers (> 0), so a typical 5-point Likert scale would use values 1-5, not 0-4. The maximum across all weighted question embeddings is taken, then shifted to be non-negative, and finally normalized, capturing both what questions were asked AND how the patient answered them.
 
 3. Dimension Reduction (Optional):
    * Can reduce dimensions using:

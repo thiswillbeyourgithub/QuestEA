@@ -421,7 +421,7 @@ If you find this repository helpful, feel free to cite this repo.
     author = {Cornelis, Olivier},
     title = {QuestEA},
     year = {2024},
-    version = {1.0.0},
+    version = {1.0.1},
     date = {2024-06-12},
     url = {https://orcid.org/0000-0002-5445-4679}
 }

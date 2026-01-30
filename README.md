@@ -33,8 +33,9 @@ The process of turning patients into embeddings involves several technical steps
 
 **Note on Implementation:** The mathematical formulas below represent the current implementation of QuestEA. However, it's important to understand that QuestEA is fundamentally about the *concept* of combining patient responses with question semantics through embeddings. The specific formulas may very well need refinement and tweaks as we gather more data and real-world validation. What remains constant is the general idea: creating richer patient representations by considering both what questions were asked and how they were answered. Ultimately, access to real clinical data will be necessary to determine which variations of this approach are most valuable.
 
+
 <details>
-<summary><b>Raw Feature Mode: <code>feat_raw</code></b></summary>
+<summary><b>Raw Feature Mode: <code>feat_raw</code> (baseline comparison)</b></summary>
 
 ### Mathematical Details
 
@@ -53,7 +54,7 @@ $$\vec{p} = \text{Norm}([a_1, a_2, \ldots, a_N])$$
 </details>
 
 <details>
-<summary><b>Aggregated Feature Mode: <code>feat_agg</code></b></summary>
+<summary><b>Aggregated Feature Mode: <code>feat_agg</code> (baseline comparison)</b></summary>
 
 ### Mathematical Details
 
